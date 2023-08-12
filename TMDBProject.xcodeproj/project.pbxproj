@@ -13,6 +13,7 @@
 		8019EE3D2A87186200386DF8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8019EE3B2A87186200386DF8 /* Main.storyboard */; };
 		8019EE3F2A87186300386DF8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8019EE3E2A87186300386DF8 /* Assets.xcassets */; };
 		8019EE422A87186300386DF8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8019EE402A87186300386DF8 /* LaunchScreen.storyboard */; };
+		8019EE502A872F5D00386DF8 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 8019EE4F2A872F5D00386DF8 /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		8019EE3E2A87186300386DF8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8019EE412A87186300386DF8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8019EE432A87186300386DF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8019EE4F2A872F5D00386DF8 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				8019EE3E2A87186300386DF8 /* Assets.xcassets */,
 				8019EE402A87186300386DF8 /* LaunchScreen.storyboard */,
 				8019EE432A87186300386DF8 /* Info.plist */,
+				8019EE4F2A872F5D00386DF8 /* .gitignore */,
 			);
 			path = TMDBProject;
 			sourceTree = "<group>";
@@ -125,6 +128,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8019EE502A872F5D00386DF8 /* .gitignore in Resources */,
 				8019EE422A87186300386DF8 /* LaunchScreen.storyboard in Resources */,
 				8019EE3F2A87186300386DF8 /* Assets.xcassets in Resources */,
 				8019EE3D2A87186200386DF8 /* Main.storyboard in Resources */,
