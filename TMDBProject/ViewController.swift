@@ -8,7 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet var movieTableView: UITableView!
     var movieList: [Movie] = []
     var page = 1
@@ -20,15 +20,10 @@ class ViewController: UIViewController {
         movieTableView.delegate = self
         movieTableView.dataSource = self
         movieTableView.prefetchDataSource = self
-        tableviewSetting()
+
         movieTableView.rowHeight = 400
         nibSetting()
         callRequest(page: page)
-    }
-    
-    func tableviewSetting() {
-        
-
     }
     
     
@@ -50,16 +45,27 @@ class ViewController: UIViewController {
         }
     }
     
-    
-    // 영화 테이블 뷰 닙 설정
-    func nibSetting() {
-        let nib = UINib(nibName: MovieTableViewCell.identifier, bundle: nil)
-        movieTableView.register(nib, forCellReuseIdentifier: MovieTableViewCell.identifier)
+    func genreRequest() {
+        MovieAPIManager.shared.genreRequest(id: ) { json in
+            for item in json["genres"].arrayValue {
+                var genreName = "#####"
+                if item["id"].intValue == id {
+                    genreName = "#" + item["name"].stringValue
+                }
+            }
+            
+        }
+    }
+        // 영화 테이블 뷰 닙 설정
+        func nibSetting() {
+            let nib = UINib(nibName: MovieTableViewCell.identifier, bundle: nil)
+            movieTableView.register(nib, forCellReuseIdentifier: MovieTableViewCell.identifier)
+            
+        }
         
     }
-    
-}
-//영화 테이블 뷰 설정
+
+        //영화 테이블 뷰 설정
 extension ViewController: UITableViewDelegate, UITableViewDataSource, UITableViewDataSourcePrefetching {
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         for indexPath in indexPaths {
@@ -87,7 +93,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource, UITableVie
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        <#code#>
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        guard let viewcontroller = storyboard.instantiateViewController(withIdentifier: CreditViewController.identifier) as? CreditViewController else { return }
+        present(viewcontroller, animated: true)
+        
     }
-    
 }

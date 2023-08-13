@@ -18,3 +18,9 @@ struct Movie {
     var backImageView: String
     var overView: String
 }
+
+struct Credits {
+    var actorImage: String
+    var actorName: String
+    var movieActorName: String
+}

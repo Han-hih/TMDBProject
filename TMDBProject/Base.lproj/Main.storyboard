@@ -90,6 +90,20 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="y9Q-9g-hzV" id="5rd-mA-NBS">
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="42B-TK-gAY">
+                                                    <rect key="frame" x="20" y="11" width="353" height="58"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="42B-TK-gAY" firstAttribute="top" secondItem="5rd-mA-NBS" secondAttribute="topMargin" id="2yc-Xe-Lx2"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="42B-TK-gAY" secondAttribute="bottom" id="F1w-VG-SEQ"/>
+                                                <constraint firstItem="42B-TK-gAY" firstAttribute="leading" secondItem="5rd-mA-NBS" secondAttribute="leadingMargin" id="xSQ-kF-8ga"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="42B-TK-gAY" secondAttribute="trailing" id="yIN-dB-nNJ"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
@@ -104,6 +118,14 @@
                             <constraint firstItem="voW-am-QEh" firstAttribute="top" secondItem="Xvc-IQ-2q5" secondAttribute="top" id="lnn-17-rx6"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="castActorTableView" destination="voW-am-QEh" id="NK6-Ee-W1B"/>
+                        <outlet property="movieBackgroundImageView" destination="v4Y-Iu-8lG" id="LDm-rl-VbE"/>
+                        <outlet property="movieNameLabel" destination="lQX-NK-zWx" id="YAc-um-3d9"/>
+                        <outlet property="moviePosterImageView" destination="4M4-cz-fYB" id="OlY-og-Xvb"/>
+                        <outlet property="overViewLabel" destination="42B-TK-gAY" id="nsF-dz-seI"/>
+                        <outlet property="overViewTabelCell" destination="y9Q-9g-hzV" id="NiE-nE-RVH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IwH-Nl-SbC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

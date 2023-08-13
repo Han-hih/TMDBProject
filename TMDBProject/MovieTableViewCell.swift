@@ -11,7 +11,6 @@ import Kingfisher
 
 class MovieTableViewCell: UITableViewCell {
 
-    static let identifier = "MovieTableViewCell"
     
     @IBOutlet var openDateLabel: UILabel!
     @IBOutlet var genreLabel: UILabel!

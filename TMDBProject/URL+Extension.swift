@@ -13,4 +13,14 @@ extension URL {
     static func makeEndPointString(_ endPoint: String, _ secondEndPoint: String) -> String {
         return baseURL + endPoint + secondEndPoint
     }
+    
+    
+    static func makeCreditURL(_ movieID: Int) -> String {
+         let creditURL = "https://api.themoviedb.org/3/movie/\(movieID)/credits"
+        return creditURL
+    }
+    
+    
 }
+
+
