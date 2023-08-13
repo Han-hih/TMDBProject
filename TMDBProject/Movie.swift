@@ -10,9 +10,8 @@ import UIKit
 struct Movie {
     var openDateLabel: String
     var genreLabel: String
-    var movieImageView: UIImage
-    var rateLabel: String
+    var movieImageView: String
+    var rateLabel: Double
     var movieNameLabel: String
     var charactersLabel: String
-    var detailLabel: String
 }

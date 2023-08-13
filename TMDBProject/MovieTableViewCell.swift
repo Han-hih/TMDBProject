@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 
 class MovieTableViewCell: UITableViewCell {
@@ -24,14 +25,19 @@ class MovieTableViewCell: UITableViewCell {
     @IBOutlet var detailButton: UIButton!
     
     
+    
+    
+    
+    
     func configure(row: Movie) {
         openDateLabel.text = row.openDateLabel
         genreLabel.text = row.genreLabel
-        movieImageView.image = row.movieImageView
-        rateLabel.text = row.rateLabel
+        if let url = URL(string: row.movieImageView) {
+            movieImageView.kf.setImage(with: url)
+        }
+        rateLabel.text = "\(row.rateLabel)"
         movieNameLabel.text = row.movieNameLabel
         charactersLabel.text = row.charactersLabel
-        detailLabel.text = row.detailLabel
         
     }
     

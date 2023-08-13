@@ -12,14 +12,38 @@ class ViewController: UIViewController {
     @IBOutlet var movieTableView: UITableView!
     var movieList: [Movie] = []
     var page = 1
-    
+    var isEnd = false
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         movieTableView.delegate = self
         movieTableView.dataSource = self
+        movieTableView.prefetchDataSource = self
+        tableviewSetting()
+        movieTableView.rowHeight = 400
         nibSetting()
+        callRequest(page: page)
+    }
+    
+    func tableviewSetting() {
+        
+
+    }
+    
+    
+    func callRequest(page: Int) {
+        MovieAPIManager.shared.callrRequest(type: .movie, secondtype: .week) { json in
+            for item in json["results"].arrayValue {
+                let title = item["title"].stringValue
+                let rate = item["vote_average"].doubleValue
+                let openDate = item["release_date"].stringValue
+                let movieImage = "https://image.tmdb.org/t/p/w500" + item["backdrop_path"].stringValue
+                self.movieList.append(Movie(openDateLabel: openDate, genreLabel: "ㄴㄴㄴㄴ", movieImageView: movieImage, rateLabel: rate, movieNameLabel: title, charactersLabel: "ㄴㄴㄴㄴ"))
+                print(self.movieList)
+            }
+            self.movieTableView.reloadData()
+        }
     }
     
     
@@ -32,15 +56,27 @@ class ViewController: UIViewController {
     
 }
 //영화 테이블 뷰 설정
-extension ViewController: UITableViewDelegate, UITableViewDataSource {
+extension ViewController: UITableViewDelegate, UITableViewDataSource, UITableViewDataSourcePrefetching {
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        for indexPath in indexPaths {
+            if movieList.count - 1 == indexPath.row && page < 15 && isEnd == false {
+                page += 1
+                callRequest(page: page)
+            }
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return movieList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieTableViewCell.identifier) as? MovieTableViewCell else { return UITableViewCell() }
         let row = movieList[indexPath.row]
-        
+        cell.layer.cornerRadius = 8
+        cell.clipsToBounds = true
+        cell.layer.borderWidth = 1
+        cell.layer.borderColor = UIColor.black.cgColor
         cell.configure(row: row)
         
         return cell
