@@ -14,4 +14,7 @@ struct Movie {
     var rateLabel: Double
     var movieNameLabel: String
     var charactersLabel: String
+    var id: Int
+    var backImageView: String
+    var overView: String
 }

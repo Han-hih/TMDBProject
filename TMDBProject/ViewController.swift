@@ -39,7 +39,11 @@ class ViewController: UIViewController {
                 let rate = item["vote_average"].doubleValue
                 let openDate = item["release_date"].stringValue
                 let movieImage = "https://image.tmdb.org/t/p/w500" + item["backdrop_path"].stringValue
-                self.movieList.append(Movie(openDateLabel: openDate, genreLabel: "ㄴㄴㄴㄴ", movieImageView: movieImage, rateLabel: rate, movieNameLabel: title, charactersLabel: "ㄴㄴㄴㄴ"))
+                let genre = item["genre_ids"][0].intValue
+                let id = item["id"].intValue
+                let background = item["poster_path"].stringValue
+                let overview = item["overview"].stringValue
+                self.movieList.append(Movie(openDateLabel: openDate, genreLabel: "\(genre)", movieImageView: movieImage, rateLabel: rate, movieNameLabel: title, charactersLabel: "ㄴㄴㄴㄴ", id: id, backImageView: background, overView: overview))
                 print(self.movieList)
             }
             self.movieTableView.reloadData()
@@ -82,5 +86,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource, UITableVie
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        <#code#>
+    }
     
 }
