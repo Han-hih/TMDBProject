@@ -15,22 +15,36 @@ class CreditViewController: UIViewController {
     @IBOutlet var castActorTableView: UITableView!
     @IBOutlet var overViewLabel: UILabel!
     
-    let creditList: [Credits] = []
+    var creditList: [Credits] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         castActorTableView.delegate = self
         castActorTableView.dataSource = self
-        
+        castActorTableView.rowHeight = 80
+        nibSetting()
+        callRequest(id: 346698)
     }
     
     func nibSetting() {
         let nib = UINib(nibName: CreditTableViewCell.identifier, bundle: nil)
         castActorTableView.register(nib, forCellReuseIdentifier: CreditTableViewCell.identifier)
     }
- 
-    func callRequest() {
-        m
+    
+    func callRequest(id: Int) {
+        MovieAPIManager.shared.creditsRequest(id: id) { json in
+            for item in json["cast"].arrayValue {
+                
+                    let actorImage = "https://image.tmdb.org/t/p/w200" + item["profile_path"].stringValue
+                    let actorName = item["original_name"].stringValue
+                    let actorMovieName = item["character"].stringValue
+                if item["known_for_department"].stringValue == "Acting" {
+                    self.creditList.append(Credits(actorImage: actorImage, actorName: actorName, movieActorName: actorMovieName))
+                    print(self.creditList)
+                }
+            }
+            self.castActorTableView.reloadData()
+        }
     }
     
     

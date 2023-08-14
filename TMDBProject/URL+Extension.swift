@@ -16,7 +16,8 @@ extension URL {
     
     
     static func makeCreditURL(_ movieID: Int) -> String {
-         let creditURL = "https://api.themoviedb.org/3/movie/\(movieID)/credits"
+        let creditURL = "https://api.themoviedb.org/3/movie/\(movieID)/credits"
+        print(creditURL)
         return creditURL
     }
     

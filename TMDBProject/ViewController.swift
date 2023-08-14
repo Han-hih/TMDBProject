@@ -43,19 +43,20 @@ class ViewController: UIViewController {
             }
             self.movieTableView.reloadData()
         }
+        
     }
     
-    func genreRequest() {
-        MovieAPIManager.shared.genreRequest(id: ) { json in
-            for item in json["genres"].arrayValue {
-                var genreName = "#####"
-                if item["id"].intValue == id {
-                    genreName = "#" + item["name"].stringValue
-                }
-            }
-            
-        }
-    }
+//    func genreRequest() {
+//        MovieAPIManager.shared.genreRequest(id: ) { json in
+//            for item in json["genres"].arrayValue {
+//                var genreName = "#####"
+//                if item["id"].intValue == id {
+//                    genreName = "#" + item["name"].stringValue
+//                }
+//            }
+//
+//        }
+//    }
         // 영화 테이블 뷰 닙 설정
         func nibSetting() {
             let nib = UINib(nibName: MovieTableViewCell.identifier, bundle: nil)
