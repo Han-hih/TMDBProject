@@ -14,13 +14,14 @@ class ViewController: UIViewController {
     var page = 1
     var isEnd = false
     
+    var genreList: [Int: String] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         movieTableView.delegate = self
         movieTableView.dataSource = self
         movieTableView.prefetchDataSource = self
-
+        genreRequest()
         movieTableView.rowHeight = 400
         nibSetting()
         callRequest(page: page)
@@ -39,24 +40,23 @@ class ViewController: UIViewController {
                 let background = item["poster_path"].stringValue
                 let overview = item["overview"].stringValue
                 self.movieList.append(Movie(openDateLabel: openDate, genreLabel: "\(genre)", movieImageView: movieImage, rateLabel: rate, movieNameLabel: title, charactersLabel: "ㄴㄴㄴㄴ", id: id, backImageView: background, overView: overview))
-                print(self.movieList)
+//                print(self.movieList)
             }
             self.movieTableView.reloadData()
         }
         
     }
     
-//    func genreRequest() {
-//        MovieAPIManager.shared.genreRequest(id: ) { json in
-//            for item in json["genres"].arrayValue {
-//                var genreName = "#####"
-//                if item["id"].intValue == id {
-//                    genreName = "#" + item["name"].stringValue
-//                }
-//            }
-//
-//        }
-//    }
+    func genreRequest() {
+        MovieAPIManager.shared.genreRequest() { json in
+            for item in json["genres"].arrayValue {
+                self.genreList.updateValue(item["name"].stringValue, forKey: item["id"].intValue)
+                   
+                }
+            }
+        print(genreList)
+        }
+    
         // 영화 테이블 뷰 닙 설정
         func nibSetting() {
             let nib = UINib(nibName: MovieTableViewCell.identifier, bundle: nil)
@@ -93,10 +93,20 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource, UITableVie
         return cell
     }
     
+    // 값 전달이 안됨.............
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         guard let viewcontroller = storyboard.instantiateViewController(withIdentifier: CreditViewController.identifier) as? CreditViewController else { return }
-        present(viewcontroller, animated: true)
+
+        viewcontroller.movieNameLabel?.text = movieList[indexPath.row].movieNameLabel
+        if let url = URL(string: movieList[indexPath.row].movieImageView) {
+            viewcontroller.moviePosterImageView?.kf.setImage(with: url)
+        }
+        print(#function, movieList[indexPath.row].movieNameLabel, "=================================")
+        
+        
+//        viewcontroller.modalPresentationStyle = .fullScreen
+        self.navigationController?.pushViewController(viewcontroller, animated: true)
         
     }
 }

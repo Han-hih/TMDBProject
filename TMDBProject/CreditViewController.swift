@@ -11,12 +11,12 @@ class CreditViewController: UIViewController {
     @IBOutlet var movieBackgroundImageView: UIImageView!
     @IBOutlet var moviePosterImageView: UIImageView!
     @IBOutlet var movieNameLabel: UILabel!
-    @IBOutlet var overViewTabelCell: UITableViewCell!
     @IBOutlet var castActorTableView: UITableView!
-    @IBOutlet var overViewLabel: UILabel!
+    
+    
     
     var creditList: [Credits] = []
-    
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         castActorTableView.delegate = self
@@ -40,7 +40,7 @@ class CreditViewController: UIViewController {
                     let actorMovieName = item["character"].stringValue
                 if item["known_for_department"].stringValue == "Acting" {
                     self.creditList.append(Credits(actorImage: actorImage, actorName: actorName, movieActorName: actorMovieName))
-                    print(self.creditList)
+//                    print(self.creditList)
                 }
             }
             self.castActorTableView.reloadData()
