@@ -36,11 +36,19 @@ class ViewController: UIViewController {
                 let rate = item["vote_average"].doubleValue
                 let openDate = item["release_date"].stringValue
                 let movieImage = "https://image.tmdb.org/t/p/w500" + item["backdrop_path"].stringValue
-                let genre = item["genre_ids"][0].intValue
+                
+                var genre = item["genre_ids"][0].intValue
+                var genreName = ""
+                // 더 좋은 방법 찾아보기
+                for key in self.genreList.keys {
+                    if genre == key {
+                        genreName = self.genreList[key] ?? "#####"
+                    }
+                }
                 let id = item["id"].intValue
                 let background = item["poster_path"].stringValue
                 let overview = item["overview"].stringValue
-                self.movieList.append(Movie(openDateLabel: openDate, genreLabel: "\(genre)", movieImageView: movieImage, rateLabel: rate, movieNameLabel: title, charactersLabel: "ㄴㄴㄴㄴ", id: id, backImageView: background, overView: overview))
+                self.movieList.append(Movie(openDateLabel: openDate, genreLabel: genreName, movieImageView: movieImage, rateLabel: rate, movieNameLabel: title, charactersLabel: "ㄴㄴㄴㄴ", id: id, backImageView: background, overView: overview))
 //                print(self.movieList)
             }
             self.movieTableView.reloadData()
