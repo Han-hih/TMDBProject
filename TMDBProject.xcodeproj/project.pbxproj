@@ -28,6 +28,7 @@
 		806381102A890C2F0059B777 /* CreditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8063810E2A890C2F0059B777 /* CreditTableViewCell.swift */; };
 		806381112A890C2F0059B777 /* CreditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8063810F2A890C2F0059B777 /* CreditTableViewCell.xib */; };
 		806381132A892D160059B777 /* ReusableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806381122A892D160059B777 /* ReusableViewProtocol.swift */; };
+		80C62EFE2A8BF50D00BC6FAC /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C62EFD2A8BF50D00BC6FAC /* Genre.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		8063810E2A890C2F0059B777 /* CreditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditTableViewCell.swift; sourceTree = "<group>"; };
 		8063810F2A890C2F0059B777 /* CreditTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreditTableViewCell.xib; sourceTree = "<group>"; };
 		806381122A892D160059B777 /* ReusableViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableViewProtocol.swift; sourceTree = "<group>"; };
+		80C62EFD2A8BF50D00BC6FAC /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				8019EE662A87DD7F00386DF8 /* URL+Extension.swift */,
 				8019EE512A872FC500386DF8 /* APIKey.swift */,
 				8019EE572A877B0C00386DF8 /* Movie.swift */,
+				80C62EFD2A8BF50D00BC6FAC /* Genre.swift */,
 				806381122A892D160059B777 /* ReusableViewProtocol.swift */,
 				8019EE3E2A87186300386DF8 /* Assets.xcassets */,
 				8019EE402A87186300386DF8 /* LaunchScreen.storyboard */,
@@ -202,6 +205,7 @@
 				8019EE672A87DD7F00386DF8 /* URL+Extension.swift in Sources */,
 				8019EE522A872FC500386DF8 /* APIKey.swift in Sources */,
 				8063810D2A89024A0059B777 /* CreditViewController.swift in Sources */,
+				80C62EFE2A8BF50D00BC6FAC /* Genre.swift in Sources */,
 				8019EE5A2A87B4C100386DF8 /* MovieAPIManager.swift in Sources */,
 				806381102A890C2F0059B777 /* CreditTableViewCell.swift in Sources */,
 				8019EE382A87186200386DF8 /* SceneDelegate.swift in Sources */,

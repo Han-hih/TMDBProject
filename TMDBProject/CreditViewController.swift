@@ -14,18 +14,34 @@ class CreditViewController: UIViewController {
     @IBOutlet var castActorTableView: UITableView!
     
     
-    
     var creditList: [Credits] = []
-  
+    var test: Movie!
+    var idValue = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         castActorTableView.delegate = self
         castActorTableView.dataSource = self
         castActorTableView.rowHeight = 80
         nibSetting()
-        callRequest(id: 346698)
+        beforeValue()
+        print(movieNameLabel.text ?? "")
+        callRequest(id: idValue)
+        
+        
     }
     
+    func beforeValue() {
+        movieNameLabel.text = test.movieNameLabel
+        idValue = test.id
+        if let url = URL(string: test.backImageView) {
+            moviePosterImageView.kf.setImage(with: url)
+        }
+        if let url = URL(string: test.movieImageView) {
+            movieBackgroundImageView.kf.setImage(with: url)
+        }
+        
+    }
     func nibSetting() {
         let nib = UINib(nibName: CreditTableViewCell.identifier, bundle: nil)
         castActorTableView.register(nib, forCellReuseIdentifier: CreditTableViewCell.identifier)

@@ -22,7 +22,7 @@ class ViewController: UIViewController {
         movieTableView.dataSource = self
         movieTableView.prefetchDataSource = self
         genreRequest()
-        print(genreList)
+//        print(genreList)
         movieTableView.rowHeight = 400
         nibSetting()
         callRequest(page: page)
@@ -37,7 +37,7 @@ class ViewController: UIViewController {
                 let openDate = item["release_date"].stringValue
                 let movieImage = "https://image.tmdb.org/t/p/w500" + item["backdrop_path"].stringValue
                 
-                var genre = item["genre_ids"][0].intValue
+                let genre = item["genre_ids"][0].intValue
                 var genreName = ""
                 // 더 좋은 방법 찾아보기
                 for key in self.genreList.keys {
@@ -46,7 +46,8 @@ class ViewController: UIViewController {
                     }
                 }
                 let id = item["id"].intValue
-                let background = item["poster_path"].stringValue
+                // 백그라운드와 포스터 이미지 이름 변경하기
+                let background = "https://image.tmdb.org/t/p/w500" + item["poster_path"].stringValue
                 let overview = item["overview"].stringValue
                 self.movieList.append(Movie(openDateLabel: openDate, genreLabel: genreName, movieImageView: movieImage, rateLabel: rate, movieNameLabel: title, charactersLabel: "ㄴㄴㄴㄴ", id: id, backImageView: background, overView: overview))
 //                print(self.movieList)
@@ -108,11 +109,13 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource, UITableVie
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         guard let viewcontroller = storyboard.instantiateViewController(withIdentifier: CreditViewController.identifier) as? CreditViewController else { return }
-
+        viewcontroller.test = movieList[indexPath.row]
+        
         viewcontroller.movieNameLabel?.text = movieList[indexPath.row].movieNameLabel
         if let url = URL(string: movieList[indexPath.row].movieImageView) {
             viewcontroller.moviePosterImageView?.kf.setImage(with: url)
         }
+        viewcontroller.idValue = movieList[indexPath.row].id
         print(#function, movieList[indexPath.row].movieNameLabel, "=================================")
         
         

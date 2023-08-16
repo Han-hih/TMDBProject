@@ -60,6 +60,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ITh-MU-FDo">
+                                <rect key="frame" x="20" y="100.66666666666667" width="118" height="128.66666666666663"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ITh-MU-FDo" secondAttribute="height" multiplier="5.5:6" id="iFh-Fr-qgN"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Xvc-IQ-2q5"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -71,8 +77,11 @@
                             <constraint firstItem="Xvc-IQ-2q5" firstAttribute="trailing" secondItem="80i-ZY-xT2" secondAttribute="trailing" id="CfE-3X-iv4"/>
                             <constraint firstItem="Xvc-IQ-2q5" firstAttribute="trailing" secondItem="KY5-Vp-IxM" secondAttribute="trailing" id="Lz6-he-ksK"/>
                             <constraint firstItem="80i-ZY-xT2" firstAttribute="leading" secondItem="Xvc-IQ-2q5" secondAttribute="leading" id="OPX-VB-utd"/>
+                            <constraint firstItem="ITh-MU-FDo" firstAttribute="leading" secondItem="VD6-0G-xF6" secondAttribute="leading" id="Pvd-YC-CCG"/>
                             <constraint firstItem="VD6-0G-xF6" firstAttribute="top" secondItem="Xvc-IQ-2q5" secondAttribute="top" constant="20" id="TFb-wK-0hT"/>
+                            <constraint firstItem="KY5-Vp-IxM" firstAttribute="top" secondItem="ITh-MU-FDo" secondAttribute="bottom" id="Vqe-zc-x1U"/>
                             <constraint firstItem="80i-ZY-xT2" firstAttribute="top" secondItem="Xvc-IQ-2q5" secondAttribute="top" id="bzU-cl-5s2"/>
+                            <constraint firstItem="ITh-MU-FDo" firstAttribute="width" secondItem="80i-ZY-xT2" secondAttribute="width" multiplier="0.3" id="jyR-5d-v0w"/>
                             <constraint firstItem="Xvc-IQ-2q5" firstAttribute="bottom" secondItem="KY5-Vp-IxM" secondAttribute="bottom" id="lcj-37-KDA"/>
                         </constraints>
                     </view>
@@ -80,6 +89,7 @@
                         <outlet property="castActorTableView" destination="KY5-Vp-IxM" id="bet-zp-8TQ"/>
                         <outlet property="movieBackgroundImageView" destination="80i-ZY-xT2" id="zw4-GJ-84x"/>
                         <outlet property="movieNameLabel" destination="VD6-0G-xF6" id="arv-DO-NZL"/>
+                        <outlet property="moviePosterImageView" destination="ITh-MU-FDo" id="bpt-kU-qwf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IwH-Nl-SbC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
