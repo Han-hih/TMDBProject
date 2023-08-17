@@ -22,7 +22,6 @@ class ViewController: UIViewController {
         movieTableView.dataSource = self
         movieTableView.prefetchDataSource = self
         genreRequest()
-//        print(genreList)
         movieTableView.rowHeight = 400
         nibSetting()
         callRequest(page: page)
@@ -58,16 +57,28 @@ class ViewController: UIViewController {
     }
     
     func genreRequest() {
-        MovieAPIManager.shared.genreRequest() { json in
-            for item in json["genres"].arrayValue {
-                let name = item["name"].stringValue
-                let id = item["id"].intValue
+        MovieAPIManager.shared.genreRequest { value in
+            print("__________", value)
+            for item in value.genres {
+                let name = item.name
+                let id = item.id
                 self.genreList.updateValue(name, forKey: id)
-                }
-            print(self.genreList)
+                
             }
-       
+            print(self.genreList)
         }
+    }
+//
+//        MovieAPIManager.shared.genreRequest() { value in
+//            for item in json["genres"].arrayValue {
+//                let name = item["name"].stringValue
+//                let id = item["id"].intValue
+//                self.genreList.updateValue(name, forKey: id)
+//                }
+//            print(self.genreList)
+//            }
+       
+    
   
         // 영화 테이블 뷰 닙 설정
         func nibSetting() {
@@ -76,7 +87,7 @@ class ViewController: UIViewController {
             
         }
         
-    }
+}
 
         //영화 테이블 뷰 설정
 extension ViewController: UITableViewDelegate, UITableViewDataSource, UITableViewDataSourcePrefetching {
