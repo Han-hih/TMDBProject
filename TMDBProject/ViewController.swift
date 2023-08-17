@@ -10,7 +10,7 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet var movieTableView: UITableView!
-    var movieList: [Movie] = []
+    var movieList: [Result] = []
     var page = 1
     var isEnd = false
     
@@ -29,27 +29,17 @@ class ViewController: UIViewController {
     
     
     func callRequest(page: Int) {
-        MovieAPIManager.shared.callrRequest(type: .movie, secondtype: .week) { json in
-            for item in json["results"].arrayValue {
-                let title = item["title"].stringValue
-                let rate = item["vote_average"].doubleValue
-                let openDate = item["release_date"].stringValue
-                let movieImage = "https://image.tmdb.org/t/p/w500" + item["backdrop_path"].stringValue
-                
-                let genre = item["genre_ids"][0].intValue
-                var genreName = ""
-                // 더 좋은 방법 찾아보기
-                for key in self.genreList.keys {
-                    if genre == key {
-                        genreName = self.genreList[key] ?? "#####"
-                    }
-                }
-                let id = item["id"].intValue
-                // 백그라운드와 포스터 이미지 이름 변경하기
-                let background = "https://image.tmdb.org/t/p/w500" + item["poster_path"].stringValue
-                let overview = item["overview"].stringValue
-                self.movieList.append(Movie(openDateLabel: openDate, genreLabel: genreName, movieImageView: movieImage, rateLabel: rate, movieNameLabel: title, charactersLabel: "ㄴㄴㄴㄴ", id: id, backImageView: background, overView: overview))
-//                print(self.movieList)
+        MovieAPIManager.shared.callrRequest(type: .movie, secondtype: .week) { value in
+            for item in value.results {
+                let title = item.title
+                let rate = item.popularity
+                let openDate = item.releaseDate
+                let movieImage = "https://image.tmdb.org/t/p/w500" + item.backdropPath
+                let genre = item.genreIDS
+                let id = item.id
+                let background = "https://image.tmdb.org/t/p/w500" + item.posterPath
+                let overview = item.overview
+                self.movieList.append(Result(title: title, popularity: rate, backdropPath: movieImage, releaseDate: openDate, posterPath: background, id: id, genreIDS: genre, overview: overview))
             }
             self.movieTableView.reloadData()
         }
@@ -58,38 +48,38 @@ class ViewController: UIViewController {
     
     func genreRequest() {
         MovieAPIManager.shared.genreRequest { value in
-            print("__________", value)
+            //            print("__________", value)
             for item in value.genres {
                 let name = item.name
                 let id = item.id
                 self.genreList.updateValue(name, forKey: id)
                 
             }
-            print(self.genreList)
+            //            print(self.genreList)
         }
     }
-//
-//        MovieAPIManager.shared.genreRequest() { value in
-//            for item in json["genres"].arrayValue {
-//                let name = item["name"].stringValue
-//                let id = item["id"].intValue
-//                self.genreList.updateValue(name, forKey: id)
-//                }
-//            print(self.genreList)
-//            }
-       
+    //
+    //        MovieAPIManager.shared.genreRequest() { value in
+    //            for item in json["genres"].arrayValue {
+    //                let name = item["name"].stringValue
+    //                let id = item["id"].intValue
+    //                self.genreList.updateValue(name, forKey: id)
+    //                }
+    //            print(self.genreList)
+    //            }
     
-  
-        // 영화 테이블 뷰 닙 설정
-        func nibSetting() {
-            let nib = UINib(nibName: MovieTableViewCell.identifier, bundle: nil)
-            movieTableView.register(nib, forCellReuseIdentifier: MovieTableViewCell.identifier)
-            
-        }
+    
+    
+    // 영화 테이블 뷰 닙 설정
+    func nibSetting() {
+        let nib = UINib(nibName: MovieTableViewCell.identifier, bundle: nil)
+        movieTableView.register(nib, forCellReuseIdentifier: MovieTableViewCell.identifier)
         
+    }
+    
 }
 
-        //영화 테이블 뷰 설정
+//영화 테이블 뷰 설정
 extension ViewController: UITableViewDelegate, UITableViewDataSource, UITableViewDataSourcePrefetching {
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         for indexPath in indexPaths {
@@ -122,15 +112,15 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource, UITableVie
         guard let viewcontroller = storyboard.instantiateViewController(withIdentifier: CreditViewController.identifier) as? CreditViewController else { return }
         viewcontroller.test = movieList[indexPath.row]
         
-        viewcontroller.movieNameLabel?.text = movieList[indexPath.row].movieNameLabel
-        if let url = URL(string: movieList[indexPath.row].movieImageView) {
+        viewcontroller.movieNameLabel?.text = movieList[indexPath.row].title
+        if let url = URL(string: movieList[indexPath.row].posterPath) {
             viewcontroller.moviePosterImageView?.kf.setImage(with: url)
         }
         viewcontroller.idValue = movieList[indexPath.row].id
-        print(#function, movieList[indexPath.row].movieNameLabel, "=================================")
+//        print(#function, movieList[indexPath.row].movieNameLabel, "=================================")
         
         
-//        viewcontroller.modalPresentationStyle = .fullScreen
+        //        viewcontroller.modalPresentationStyle = .fullScreen
         self.navigationController?.pushViewController(viewcontroller, animated: true)
         
     }

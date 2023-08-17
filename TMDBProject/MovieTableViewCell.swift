@@ -28,15 +28,15 @@ class MovieTableViewCell: UITableViewCell {
     
     
     
-    func configure(row: Movie) {
-        openDateLabel.text = row.openDateLabel
-        genreLabel.text = row.genreLabel
-        if let url = URL(string: row.movieImageView) {
+    func configure(row: Result) {
+        openDateLabel.text = row.releaseDate
+        genreLabel.text = "\(row.genreIDS[0])"
+        if let url = URL(string: row.backdropPath) {
             movieImageView.kf.setImage(with: url)
         }
-        rateLabel.text = "\(row.rateLabel)"
-        movieNameLabel.text = row.movieNameLabel
-        charactersLabel.text = row.charactersLabel
+        rateLabel.text = "\(row.popularity)"
+        movieNameLabel.text = row.title
+//        charactersLabel.text = row.charactersLabel
         
     }
     

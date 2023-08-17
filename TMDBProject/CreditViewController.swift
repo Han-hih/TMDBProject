@@ -15,7 +15,7 @@ class CreditViewController: UIViewController {
     
     
     var creditList: [Credits] = []
-    var test: Movie!
+    var test: Result!
     var idValue = 0
     
     override func viewDidLoad() {
@@ -32,12 +32,12 @@ class CreditViewController: UIViewController {
     }
     
     func beforeValue() {
-        movieNameLabel.text = test.movieNameLabel
+        movieNameLabel.text = test.title
         idValue = test.id
-        if let url = URL(string: test.backImageView) {
+        if let url = URL(string: test.backdropPath) {
             moviePosterImageView.kf.setImage(with: url)
         }
-        if let url = URL(string: test.movieImageView) {
+        if let url = URL(string: test.posterPath) {
             movieBackgroundImageView.kf.setImage(with: url)
         }
         

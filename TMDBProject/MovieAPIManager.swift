@@ -14,36 +14,33 @@ class MovieAPIManager {
     
     
     var genreList: GenreElement = GenreElement(id: 0, name: "")
-    var list: Movie = Movie(openDateLabel: "", genreLabel: "", movieImageView: "", rateLabel: 0.0, movieNameLabel: "", charactersLabel: "", id: 0, backImageView: "", overView: "")
+    //    var list: Movie = Movie(openDateLabel: "", genreLabel: "", movieImageView: "", rateLabel: 0.0, movieNameLabel: "", charactersLabel: "", id: 0, backImageView: "", overView: "")
     static let shared = MovieAPIManager()
     private init() { }
     
     let header: HTTPHeaders = ["accept": "application/json",
                                "Authorization": APIKey.movieAcces]
     
-    func callrRequest(type: firstEndpoint, secondtype: secondEndPoint, completionHandler: @escaping (JSON) -> ()) {
+    func callrRequest(type: firstEndpoint, secondtype: secondEndPoint, completionHandler: @escaping (Movie) -> ()) {
         let url = type.requestURL + secondtype.secondRequestURL + "api_key=\(APIKey.movieKey)"
         AF
-//            .request(url, headers: header)
-//            .validate(statusCode: 200...500)
-//            .responseDecodable(of: Movie.self) { movi in
-//                <#code#>
-//            }
+        //            .request(url, headers: header)
+        //            .validate(statusCode: 200...500)
+        //            .responseDecodable(of: Movie.self) { movi in
+        //                <#code#>
+        //            }
             .request(url, method: .get, headers: header)
             .validate(statusCode: 200...500)
-            .responseJSON { response in
-                switch response.result {
+            .responseDecodable(of: Movie.self) { data in
+                switch data.result {
                 case .success(let value):
-                    let json = JSON(value)
-                    //                    print("JSON: \(json)")
-                    completionHandler(json)
-
+                    completionHandler(value)
                 case .failure(let error):
                     print(error)
                 }
             }
     }
-//
+    //
     func genreRequest(completionHandler: @escaping(Genre) -> Void)  {
         //
         let url = "https://api.themoviedb.org/3/genre/movie/list"
@@ -71,24 +68,24 @@ class MovieAPIManager {
     //            }
     //
     //        }
-
-
-func creditsRequest(id: Int, completionHandler: @escaping(JSON) -> ()) {
-    let url = URL.makeCreditURL(id)
-    AF.request(url, method: .get, headers: header).validate(statusCode: 200...500).responseJSON { response in
-        switch response.result {
-        case .success(let value):
-            let json = JSON(value)
-            //                print("JSON: \(json)")
-            completionHandler(json)
+    
+    
+    func creditsRequest(id: Int, completionHandler: @escaping(JSON) -> ()) {
+        let url = URL.makeCreditURL(id)
+        AF.request(url, method: .get, headers: header).validate(statusCode: 200...500).responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                //                print("JSON: \(json)")
+                completionHandler(json)
+                
+            case .failure(let error):
+                print(error)
+            }
             
-        case .failure(let error):
-            print(error)
         }
         
     }
     
-}
-
 }
 
