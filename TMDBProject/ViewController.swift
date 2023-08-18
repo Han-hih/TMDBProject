@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     var page = 1
     var isEnd = false
     
-    var genreList: [Int: String] = [:]
+   static var genreList: [Int: String] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +52,7 @@ class ViewController: UIViewController {
             for item in value.genres {
                 let name = item.name
                 let id = item.id
-                self.genreList.updateValue(name, forKey: id)
+                ViewController.genreList.updateValue(name, forKey: id)
                 
             }
             //            print(self.genreList)

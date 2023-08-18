@@ -25,12 +25,19 @@ class MovieTableViewCell: UITableViewCell {
     
     
     
-    
-    
+        var genreName = ""
     
     func configure(row: Result) {
         openDateLabel.text = row.releaseDate
-        genreLabel.text = "\(row.genreIDS[0])"
+
+        for key in ViewController.genreList.keys {
+            if row.genreIDS[0].codingKey.intValue == key {
+                genreName = ViewController.genreList[key] ?? "#####"
+            }
+        }
+        genreLabel.text = genreName
+//        genreLabel.text =
+//        "\(row.genreIDS[0])"
         if let url = URL(string: row.backdropPath) {
             movieImageView.kf.setImage(with: url)
         }
@@ -39,10 +46,5 @@ class MovieTableViewCell: UITableViewCell {
 //        charactersLabel.text = row.charactersLabel
         
     }
-    
-   
-    
-    
-    
-    
+ 
 }
