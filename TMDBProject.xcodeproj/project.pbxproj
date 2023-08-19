@@ -29,6 +29,11 @@
 		806381112A890C2F0059B777 /* CreditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8063810F2A890C2F0059B777 /* CreditTableViewCell.xib */; };
 		806381132A892D160059B777 /* ReusableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806381122A892D160059B777 /* ReusableViewProtocol.swift */; };
 		80C62EFE2A8BF50D00BC6FAC /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C62EFD2A8BF50D00BC6FAC /* Genre.swift */; };
+		80C62F2E2A90939600BC6FAC /* TVViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C62F2D2A90939600BC6FAC /* TVViewController.swift */; };
+		80C62F312A909D1200BC6FAC /* TVCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C62F2F2A909D1200BC6FAC /* TVCollectionViewCell.swift */; };
+		80C62F322A909D1200BC6FAC /* TVCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80C62F302A909D1200BC6FAC /* TVCollectionViewCell.xib */; };
+		80C62F352A909D2500BC6FAC /* TVCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C62F332A909D2500BC6FAC /* TVCollectionReusableView.swift */; };
+		80C62F362A909D2500BC6FAC /* TVCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80C62F342A909D2500BC6FAC /* TVCollectionReusableView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +58,11 @@
 		8063810F2A890C2F0059B777 /* CreditTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreditTableViewCell.xib; sourceTree = "<group>"; };
 		806381122A892D160059B777 /* ReusableViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableViewProtocol.swift; sourceTree = "<group>"; };
 		80C62EFD2A8BF50D00BC6FAC /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
+		80C62F2D2A90939600BC6FAC /* TVViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVViewController.swift; sourceTree = "<group>"; };
+		80C62F2F2A909D1200BC6FAC /* TVCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVCollectionViewCell.swift; sourceTree = "<group>"; };
+		80C62F302A909D1200BC6FAC /* TVCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TVCollectionViewCell.xib; sourceTree = "<group>"; };
+		80C62F332A909D2500BC6FAC /* TVCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVCollectionReusableView.swift; sourceTree = "<group>"; };
+		80C62F342A909D2500BC6FAC /* TVCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TVCollectionReusableView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +103,11 @@
 				8019EE352A87186200386DF8 /* AppDelegate.swift */,
 				8019EE372A87186200386DF8 /* SceneDelegate.swift */,
 				8019EE3B2A87186200386DF8 /* Main.storyboard */,
+				80C62F2F2A909D1200BC6FAC /* TVCollectionViewCell.swift */,
+				80C62F332A909D2500BC6FAC /* TVCollectionReusableView.swift */,
+				80C62F342A909D2500BC6FAC /* TVCollectionReusableView.xib */,
+				80C62F302A909D1200BC6FAC /* TVCollectionViewCell.xib */,
+				80C62F2D2A90939600BC6FAC /* TVViewController.swift */,
 				8063810C2A89024A0059B777 /* CreditViewController.swift */,
 				8063810E2A890C2F0059B777 /* CreditTableViewCell.swift */,
 				8063810F2A890C2F0059B777 /* CreditTableViewCell.xib */,
@@ -181,11 +196,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				8019EE502A872F5D00386DF8 /* .gitignore in Resources */,
+				80C62F362A909D2500BC6FAC /* TVCollectionReusableView.xib in Resources */,
 				8019EE562A87535600386DF8 /* MovieTableViewCell.xib in Resources */,
 				8019EE422A87186300386DF8 /* LaunchScreen.storyboard in Resources */,
 				8019EE3F2A87186300386DF8 /* Assets.xcassets in Resources */,
 				806381112A890C2F0059B777 /* CreditTableViewCell.xib in Resources */,
 				8019EE3D2A87186200386DF8 /* Main.storyboard in Resources */,
+				80C62F322A909D1200BC6FAC /* TVCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,9 +213,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80C62F2E2A90939600BC6FAC /* TVViewController.swift in Sources */,
 				8019EE552A87535600386DF8 /* MovieTableViewCell.swift in Sources */,
 				8019EE3A2A87186200386DF8 /* ViewController.swift in Sources */,
 				8019EE652A87DD0800386DF8 /* EndPoint.swift in Sources */,
+				80C62F312A909D1200BC6FAC /* TVCollectionViewCell.swift in Sources */,
 				8019EE582A877B0C00386DF8 /* Movie.swift in Sources */,
 				8019EE362A87186200386DF8 /* AppDelegate.swift in Sources */,
 				806381132A892D160059B777 /* ReusableViewProtocol.swift in Sources */,
@@ -207,6 +226,7 @@
 				8063810D2A89024A0059B777 /* CreditViewController.swift in Sources */,
 				80C62EFE2A8BF50D00BC6FAC /* Genre.swift in Sources */,
 				8019EE5A2A87B4C100386DF8 /* MovieAPIManager.swift in Sources */,
+				80C62F352A909D2500BC6FAC /* TVCollectionReusableView.swift in Sources */,
 				806381102A890C2F0059B777 /* CreditTableViewCell.swift in Sources */,
 				8019EE382A87186200386DF8 /* SceneDelegate.swift in Sources */,
 			);
