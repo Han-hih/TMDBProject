@@ -17,12 +17,28 @@ class TVViewController: UIViewController {
 
         tvCollectionView.delegate = self
         tvCollectionView.dataSource = self
+        nibSetting()
         
-        
-        
+        setCollectionViewLayOut()
     }
     
-
+    func setCollectionViewLayOut() {
+        let layout = UICollectionViewFlowLayout()
+        let spacing: CGFloat = 10
+        let width = UIScreen.main.bounds.width - spacing
+        layout.itemSize = CGSize(width: width, height: width / 2)
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        layout.minimumLineSpacing = 10
+        layout.minimumInteritemSpacing = 10
+        
+        tvCollectionView.collectionViewLayout = layout
+    }
+    
+    func nibSetting() {
+        let nib = UINib(nibName: TVCollectionViewCell.identifier, bundle: nil)
+        tvCollectionView.register(nib, forCellWithReuseIdentifier: TVCollectionViewCell.identifier)
+        
+    }
 
 }
 

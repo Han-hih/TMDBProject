@@ -124,7 +124,7 @@
                                         </collectionViewCellContentView>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="FOP-Xu-yGW">
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="TVCollectionReusableView" reuseIdentifier="TVCollectionReusableView" id="FOP-Xu-yGW" customClass="TVCollectionReusableView" customModule="TMDBProject" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="50"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </collectionReusableView>
@@ -141,7 +141,6 @@
                     </view>
                     <connections>
                         <outlet property="tvCollectionView" destination="5hv-Dx-zoT" id="OKs-j5-Zve"/>
-                        <outlet property="tvReuseCollectionView" destination="FOP-Xu-yGW" id="W3K-cO-vbQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tlf-Mq-1OW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

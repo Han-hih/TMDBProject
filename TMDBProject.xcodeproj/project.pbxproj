@@ -98,16 +98,12 @@
 		8019EE342A87186200386DF8 /* TMDBProject */ = {
 			isa = PBXGroup;
 			children = (
+				80C62F372A90B7FD00BC6FAC /* TV */,
 				8019EE4F2A872F5D00386DF8 /* .gitignore */,
 				8019EE432A87186300386DF8 /* Info.plist */,
 				8019EE352A87186200386DF8 /* AppDelegate.swift */,
 				8019EE372A87186200386DF8 /* SceneDelegate.swift */,
 				8019EE3B2A87186200386DF8 /* Main.storyboard */,
-				80C62F2F2A909D1200BC6FAC /* TVCollectionViewCell.swift */,
-				80C62F332A909D2500BC6FAC /* TVCollectionReusableView.swift */,
-				80C62F342A909D2500BC6FAC /* TVCollectionReusableView.xib */,
-				80C62F302A909D1200BC6FAC /* TVCollectionViewCell.xib */,
-				80C62F2D2A90939600BC6FAC /* TVViewController.swift */,
 				8063810C2A89024A0059B777 /* CreditViewController.swift */,
 				8063810E2A890C2F0059B777 /* CreditTableViewCell.swift */,
 				8063810F2A890C2F0059B777 /* CreditTableViewCell.xib */,
@@ -125,6 +121,18 @@
 				8019EE402A87186300386DF8 /* LaunchScreen.storyboard */,
 			);
 			path = TMDBProject;
+			sourceTree = "<group>";
+		};
+		80C62F372A90B7FD00BC6FAC /* TV */ = {
+			isa = PBXGroup;
+			children = (
+				80C62F2F2A909D1200BC6FAC /* TVCollectionViewCell.swift */,
+				80C62F342A909D2500BC6FAC /* TVCollectionReusableView.xib */,
+				80C62F332A909D2500BC6FAC /* TVCollectionReusableView.swift */,
+				80C62F302A909D1200BC6FAC /* TVCollectionViewCell.xib */,
+				80C62F2D2A90939600BC6FAC /* TVViewController.swift */,
+			);
+			path = TV;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
