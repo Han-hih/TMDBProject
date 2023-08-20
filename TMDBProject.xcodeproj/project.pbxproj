@@ -100,24 +100,18 @@
 		8019EE342A87186200386DF8 /* TMDBProject */ = {
 			isa = PBXGroup;
 			children = (
+				80C62F3C2A92468D00BC6FAC /* Movie */,
 				80C62F372A90B7FD00BC6FAC /* TV */,
 				8019EE4F2A872F5D00386DF8 /* .gitignore */,
 				8019EE432A87186300386DF8 /* Info.plist */,
 				8019EE352A87186200386DF8 /* AppDelegate.swift */,
 				8019EE372A87186200386DF8 /* SceneDelegate.swift */,
 				8019EE3B2A87186200386DF8 /* Main.storyboard */,
-				8063810C2A89024A0059B777 /* CreditViewController.swift */,
-				8063810E2A890C2F0059B777 /* CreditTableViewCell.swift */,
-				8063810F2A890C2F0059B777 /* CreditTableViewCell.xib */,
-				8019EE392A87186200386DF8 /* ViewController.swift */,
-				8019EE532A87535600386DF8 /* MovieTableViewCell.swift */,
-				8019EE542A87535600386DF8 /* MovieTableViewCell.xib */,
 				8019EE592A87B4C100386DF8 /* MovieAPIManager.swift */,
 				8019EE642A87DD0800386DF8 /* EndPoint.swift */,
 				8019EE662A87DD7F00386DF8 /* URL+Extension.swift */,
 				8019EE512A872FC500386DF8 /* APIKey.swift */,
 				80C62F3A2A920F9B00BC6FAC /* Genre.swift */,
-				8019EE572A877B0C00386DF8 /* Movie.swift */,
 				806381122A892D160059B777 /* ReusableViewProtocol.swift */,
 				8019EE3E2A87186300386DF8 /* Assets.xcassets */,
 				8019EE402A87186300386DF8 /* LaunchScreen.storyboard */,
@@ -136,6 +130,20 @@
 				80C62F382A91EA0F00BC6FAC /* TV.swift */,
 			);
 			path = TV;
+			sourceTree = "<group>";
+		};
+		80C62F3C2A92468D00BC6FAC /* Movie */ = {
+			isa = PBXGroup;
+			children = (
+				8063810F2A890C2F0059B777 /* CreditTableViewCell.xib */,
+				8063810E2A890C2F0059B777 /* CreditTableViewCell.swift */,
+				8063810C2A89024A0059B777 /* CreditViewController.swift */,
+				8019EE532A87535600386DF8 /* MovieTableViewCell.swift */,
+				8019EE542A87535600386DF8 /* MovieTableViewCell.xib */,
+				8019EE392A87186200386DF8 /* ViewController.swift */,
+				8019EE572A877B0C00386DF8 /* Movie.swift */,
+			);
+			path = Movie;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -40,6 +40,7 @@ class MovieAPIManager {
                 }
             }
     }
+    
     func tvSearchRequestID(_ query: String, completionHandler: @escaping(TvSearch) -> ()) {
         guard let text = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
         let url = URL.makeTvURL(text)
@@ -53,6 +54,20 @@ class MovieAPIManager {
             }
         }
     }
+    
+    func tvSeasonRequest(_ seriesID: Int, completionHandler: @escaping(TVSeason) -> ()) {
+        let url = URL.makeTVSeasonURL(seriesID)
+        
+        AF.request(url, method: .get, headers: header).validate(statusCode: 200...500).responseDecodable(of: TVSeason.self) { data in
+            switch data.result {
+            case.success(let value):
+                completionHandler(value)
+            case.failure(let error):
+                print(error)
+            }
+        }
+    }
+    
     
     //
     func genreRequest(completionHandler: @escaping(Genre) -> Void)  {

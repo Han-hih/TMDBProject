@@ -15,7 +15,7 @@ class TVViewController: UIViewController {
     
     
     var tvID = 0
-    
+    var seasonList: [Season] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +55,20 @@ class TVViewController: UIViewController {
         }
     }
     
-    
+    // 시즌 관련 정보 불러오기
+    func callSeasonRequest(tvID: Int) {
+        MovieAPIManager.shared.tvSeasonRequest(tvID) { value in
+            for item in value.seasons {
+                let episodcount = item.episodeCount
+                let seasonNumber = item.seasonNumber
+                let seasonID = item.id
+                let seasonName = item.name
+                self.seasonList.append(Season(episodeCount: episodcount, id: seasonID, name: seasonName, seasonNumber: seasonNumber))
+                print(seasonID, seasonName, seasonNumber, episodcount)
+            }
+        }
+        
+    }
     
     
 }
@@ -89,7 +102,7 @@ extension TVViewController: UISearchBarDelegate {
         guard let query = searchBar.text else { return }
         
         callSearchRequest(query: query)
-        
+        callSeasonRequest(tvID: tvID)
     }
         
         
