@@ -46,17 +46,26 @@ class TVViewController: UIViewController {
         
     }
     // 서치바에 입력한 값을 tvID로 반환해준다.
-    func callSearchRequest(query: String) {
+//    func callSearchRequest(query: String) {
+//
+//        MovieAPIManager.shared.tvSearchRequestID(query) { value in
+//
+//            self.tvID = value.results[0].id
+//            print(self.tvID)
+//        }
+//    }
+    func callSearchRequest(_ query: String) -> Int {
         
         MovieAPIManager.shared.tvSearchRequestID(query) { value in
-            
             self.tvID = value.results[0].id
-            print(self.tvID)
         }
+        // 이 값을 시즌정보와 에피소드정보(?) 불러오는 함수에 넣어준다.
+        return self.tvID
+        
     }
     
     // 시즌 관련 정보 불러오기
-    func callSeasonRequest(tvID: Int) {
+    func callSeasonRequest(tvID: Int) -> [Int] {
         MovieAPIManager.shared.tvSeasonRequest(tvID) { value in
             for item in value.seasons {
                 let episodcount = item.episodeCount
@@ -67,14 +76,15 @@ class TVViewController: UIViewController {
                 print(seasonID, seasonName, seasonNumber, episodcount)
             }
         }
-        
+        // 에피소드 개수를 가져와서 컬렉션뷰(에피소드정보) 셀 개수로 만들어주기?
+        return seasonList.map { $0.episodeCount }
     }
     
     
 }
 extension TVViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -101,8 +111,8 @@ extension TVViewController: UISearchBarDelegate {
         
         guard let query = searchBar.text else { return }
         
-        callSearchRequest(query: query)
-        callSeasonRequest(tvID: tvID)
+//        callSearchRequest(query: query)
+        print(callSeasonRequest(tvID: callSearchRequest(query)))
     }
         
         
