@@ -8,15 +8,21 @@
 import UIKit
 
 class TVViewController: UIViewController {
-
-    @IBOutlet var tvReuseCollectionView: UICollectionReusableView!
+    
+    @IBOutlet var searchBar: UISearchBar!
     
     @IBOutlet var tvCollectionView: UICollectionView!
+    
+    
+    var tvID = 0
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         tvCollectionView.delegate = self
         tvCollectionView.dataSource = self
+        searchBar.delegate = self
         nibSetting()
         
         setCollectionViewLayOut()
@@ -39,12 +45,23 @@ class TVViewController: UIViewController {
         tvCollectionView.register(nib, forCellWithReuseIdentifier: TVCollectionViewCell.identifier)
         
     }
-
+    // 서치바에 입력한 값을 tvID로 반환해준다.
+    func callSearchRequest(query: String) {
+        
+        MovieAPIManager.shared.tvSearchRequestID(query) { value in
+            
+            self.tvID = value.results[0].id
+            print(self.tvID)
+        }
+    }
+    
+    
+    
+    
 }
-
 extension TVViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        4
+        return 4
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -65,4 +82,16 @@ extension TVViewController: UICollectionViewDelegate, UICollectionViewDataSource
         }
     }
 }
+
+extension TVViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        guard let query = searchBar.text else { return }
+        
+        callSearchRequest(query: query)
+        
+    }
+        
+        
+    }
 

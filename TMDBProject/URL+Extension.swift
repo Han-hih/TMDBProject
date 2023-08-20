@@ -8,10 +8,10 @@
 import Foundation
 
 extension URL {
-    static let baseURL = "https://api.themoviedb.org/3/trending/"
+    static let baseURL = "https://api.themoviedb.org/3/"
     
     static func makeEndPointString(_ endPoint: String, _ secondEndPoint: String) -> String {
-        return baseURL + endPoint + secondEndPoint
+        return baseURL + "trending/" + endPoint + secondEndPoint
     }
     
     
@@ -19,6 +19,11 @@ extension URL {
         let creditURL = "https://api.themoviedb.org/3/movie/\(movieID)/credits"
         print(creditURL)
         return creditURL
+    }
+    
+    static func makeTvURL(_ query: String) -> String {
+        let tvURL = baseURL + "search/tv?query=" + query
+        return tvURL
     }
     
     

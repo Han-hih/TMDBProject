@@ -28,12 +28,13 @@
 		806381102A890C2F0059B777 /* CreditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8063810E2A890C2F0059B777 /* CreditTableViewCell.swift */; };
 		806381112A890C2F0059B777 /* CreditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8063810F2A890C2F0059B777 /* CreditTableViewCell.xib */; };
 		806381132A892D160059B777 /* ReusableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806381122A892D160059B777 /* ReusableViewProtocol.swift */; };
-		80C62EFE2A8BF50D00BC6FAC /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C62EFD2A8BF50D00BC6FAC /* Genre.swift */; };
 		80C62F2E2A90939600BC6FAC /* TVViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C62F2D2A90939600BC6FAC /* TVViewController.swift */; };
 		80C62F312A909D1200BC6FAC /* TVCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C62F2F2A909D1200BC6FAC /* TVCollectionViewCell.swift */; };
 		80C62F322A909D1200BC6FAC /* TVCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80C62F302A909D1200BC6FAC /* TVCollectionViewCell.xib */; };
 		80C62F352A909D2500BC6FAC /* TVCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C62F332A909D2500BC6FAC /* TVCollectionReusableView.swift */; };
 		80C62F362A909D2500BC6FAC /* TVCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80C62F342A909D2500BC6FAC /* TVCollectionReusableView.xib */; };
+		80C62F392A91EA0F00BC6FAC /* TV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C62F382A91EA0F00BC6FAC /* TV.swift */; };
+		80C62F3B2A920F9B00BC6FAC /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C62F3A2A920F9B00BC6FAC /* Genre.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,12 +58,13 @@
 		8063810E2A890C2F0059B777 /* CreditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditTableViewCell.swift; sourceTree = "<group>"; };
 		8063810F2A890C2F0059B777 /* CreditTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreditTableViewCell.xib; sourceTree = "<group>"; };
 		806381122A892D160059B777 /* ReusableViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableViewProtocol.swift; sourceTree = "<group>"; };
-		80C62EFD2A8BF50D00BC6FAC /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 		80C62F2D2A90939600BC6FAC /* TVViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVViewController.swift; sourceTree = "<group>"; };
 		80C62F2F2A909D1200BC6FAC /* TVCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVCollectionViewCell.swift; sourceTree = "<group>"; };
 		80C62F302A909D1200BC6FAC /* TVCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TVCollectionViewCell.xib; sourceTree = "<group>"; };
 		80C62F332A909D2500BC6FAC /* TVCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVCollectionReusableView.swift; sourceTree = "<group>"; };
 		80C62F342A909D2500BC6FAC /* TVCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TVCollectionReusableView.xib; sourceTree = "<group>"; };
+		80C62F382A91EA0F00BC6FAC /* TV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TV.swift; sourceTree = "<group>"; };
+		80C62F3A2A920F9B00BC6FAC /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,8 +116,8 @@
 				8019EE642A87DD0800386DF8 /* EndPoint.swift */,
 				8019EE662A87DD7F00386DF8 /* URL+Extension.swift */,
 				8019EE512A872FC500386DF8 /* APIKey.swift */,
+				80C62F3A2A920F9B00BC6FAC /* Genre.swift */,
 				8019EE572A877B0C00386DF8 /* Movie.swift */,
-				80C62EFD2A8BF50D00BC6FAC /* Genre.swift */,
 				806381122A892D160059B777 /* ReusableViewProtocol.swift */,
 				8019EE3E2A87186300386DF8 /* Assets.xcassets */,
 				8019EE402A87186300386DF8 /* LaunchScreen.storyboard */,
@@ -131,6 +133,7 @@
 				80C62F332A909D2500BC6FAC /* TVCollectionReusableView.swift */,
 				80C62F302A909D1200BC6FAC /* TVCollectionViewCell.xib */,
 				80C62F2D2A90939600BC6FAC /* TVViewController.swift */,
+				80C62F382A91EA0F00BC6FAC /* TV.swift */,
 			);
 			path = TV;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80C62F392A91EA0F00BC6FAC /* TV.swift in Sources */,
 				80C62F2E2A90939600BC6FAC /* TVViewController.swift in Sources */,
 				8019EE552A87535600386DF8 /* MovieTableViewCell.swift in Sources */,
 				8019EE3A2A87186200386DF8 /* ViewController.swift in Sources */,
@@ -230,9 +234,9 @@
 				8019EE362A87186200386DF8 /* AppDelegate.swift in Sources */,
 				806381132A892D160059B777 /* ReusableViewProtocol.swift in Sources */,
 				8019EE672A87DD7F00386DF8 /* URL+Extension.swift in Sources */,
+				80C62F3B2A920F9B00BC6FAC /* Genre.swift in Sources */,
 				8019EE522A872FC500386DF8 /* APIKey.swift in Sources */,
 				8063810D2A89024A0059B777 /* CreditViewController.swift in Sources */,
-				80C62EFE2A8BF50D00BC6FAC /* Genre.swift in Sources */,
 				8019EE5A2A87B4C100386DF8 /* MovieAPIManager.swift in Sources */,
 				80C62F352A909D2500BC6FAC /* TVCollectionReusableView.swift in Sources */,
 				806381102A890C2F0059B777 /* CreditTableViewCell.swift in Sources */,
@@ -383,6 +387,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PUJ68C53FY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TMDBProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -413,6 +418,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PUJ68C53FY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TMDBProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

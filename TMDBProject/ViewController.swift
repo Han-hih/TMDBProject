@@ -30,6 +30,7 @@ class ViewController: UIViewController {
     
     func callRequest(page: Int) {
         MovieAPIManager.shared.callrRequest(type: .movie, secondtype: .week) { value in
+            
             for item in value.results {
                 let title = item.title
                 let rate = item.popularity
