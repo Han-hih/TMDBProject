@@ -16,7 +16,8 @@ class TVViewController: UIViewController {
     
     var tvID = 0
     var seasonList: [Season] = []
-    
+    var seasonCount: [Int] = []
+    var episodeCount: [Int] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -74,6 +75,7 @@ class TVViewController: UIViewController {
                 let seasonName = item.name
                 self.seasonList.append(Season(episodeCount: episodcount, id: seasonID, name: seasonName, seasonNumber: seasonNumber))
                 print(seasonID, seasonName, seasonNumber, episodcount)
+                self.seasonCount.append(seasonNumber)
             }
         }
         // 에피소드 개수를 가져와서 컬렉션뷰(에피소드정보) 셀 개수로 만들어주기?
@@ -83,8 +85,12 @@ class TVViewController: UIViewController {
     
 }
 extension TVViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return seasonCount.count
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return episodeCount.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
