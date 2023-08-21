@@ -21,7 +21,6 @@ class TVViewController: UIViewController {
     var episodeList: [Episode] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         tvCollectionView.delegate = self
         tvCollectionView.dataSource = self
         searchBar.delegate = self
@@ -34,11 +33,11 @@ class TVViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         let spacing: CGFloat = 10
         let width = UIScreen.main.bounds.width - spacing
-        layout.itemSize = CGSize(width: width, height: width / 2)
+        let height = UIScreen.main.bounds.height
+        layout.itemSize = CGSize(width: width, height: height / 6)
         layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         layout.minimumLineSpacing = 10
-        layout.minimumInteritemSpacing = 10
-        
+        layout.minimumInteritemSpacing = 1
         tvCollectionView.collectionViewLayout = layout
     }
     
@@ -61,6 +60,7 @@ class TVViewController: UIViewController {
         MovieAPIManager.shared.tvSearchRequestID(query) { value in
             self.tvID = value.results[0].id
         }
+        self.tvCollectionView.reloadData()
         // 이 값을 시즌정보와 에피소드정보(?) 불러오는 함수에 넣어준다.
         return self.tvID
         
@@ -78,6 +78,7 @@ class TVViewController: UIViewController {
                 print(seasonID, seasonName, seasonNumber, episodcount)
                 self.seasonCount.append(seasonNumber)
             }
+            self.tvCollectionView.reloadData()
         }
         // 에피소드 개수를 가져와서 컬렉션뷰(에피소드정보) 셀 개수로 만들어주기?
         return seasonList.map { $0.episodeCount }
@@ -85,35 +86,41 @@ class TVViewController: UIViewController {
     // 이미지, 제목, 에피소드 넘버, 평점, 방영날짜, 러닝타임, 오버뷰 가져오기
     func callEpisodeRequest(tvID: Int, seasonNumber: Int) {
         MovieAPIManager.shared.tvEpisodeRequest(tvID, seasonNumber) { value in
-            for item in value.episodes {
+            for item in value.episodes ?? [] {
                 let title = item.name
-                let image = item.stillPath
+                let image = "https://image.tmdb.org/t/p/w500" + item.stillPath
                 let rate = item.voteAverage
                 let episodeNumber = item.episodeNumber
-                let broadDay = item.airDate
+                let broadDay = item.airDate ?? ""
                 let runningTime = item.runtime
                 let overview = item.overview
                 self.episodeList.append(Episode(airDate: broadDay, episodeNumber: episodeNumber, name: title, overview: overview, runtime: runningTime, seasonNumber: episodeNumber, stillPath: image, voteAverage: rate))
+               
             }
+            self.tvCollectionView.reloadData()
         }
     }
     
     
 }
 extension TVViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return seasonCount.count
-    }
+//    func numberOfSections(in collectionView: UICollectionView) -> Int {
+//        return seasonCount.count
+//    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // 섹션개수만큼 for문 돌려서 설정.?
-        return episodeCount.count
+//        return episodeCount.count
+        return episodeList.count
+//        return 14
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TVCollectionViewCell.identifier, for: indexPath) as? TVCollectionViewCell else { return UICollectionViewCell() }
+        let row = episodeList[indexPath.row]
         
-        
+        cell.configure(row: row)
+
         return cell
     }
     
@@ -134,8 +141,12 @@ extension TVViewController: UISearchBarDelegate {
         
         guard let query = searchBar.text else { return }
         
-//        callSearchRequest(query: query)
-        print(callSeasonRequest(tvID: callSearchRequest(query)))
+       tvID = callSearchRequest(query)
+//        callSeasonRequest(tvID: callSearchRequest(query))
+        print(tvID)
+        callEpisodeRequest(tvID: callSearchRequest(query), seasonNumber: 1)
+        print(episodeList)
+        tvCollectionView.reloadData()
     }
         
         

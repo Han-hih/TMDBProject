@@ -122,10 +122,10 @@
 		80C62F372A90B7FD00BC6FAC /* TV */ = {
 			isa = PBXGroup;
 			children = (
-				80C62F2F2A909D1200BC6FAC /* TVCollectionViewCell.swift */,
 				80C62F342A909D2500BC6FAC /* TVCollectionReusableView.xib */,
 				80C62F332A909D2500BC6FAC /* TVCollectionReusableView.swift */,
 				80C62F302A909D1200BC6FAC /* TVCollectionViewCell.xib */,
+				80C62F2F2A909D1200BC6FAC /* TVCollectionViewCell.swift */,
 				80C62F2D2A90939600BC6FAC /* TVViewController.swift */,
 				80C62F382A91EA0F00BC6FAC /* TV.swift */,
 			);

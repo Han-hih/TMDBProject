@@ -65,12 +65,12 @@ struct Season: Codable {
 
 // MARK: - TVEpisode
 struct TVEpisode: Codable {
-    let airDate: String
-    let episodes: [Episode]
-    let name, overview: String
-    let posterPath: String
-    let seasonNumber: Int
-    let voteAverage: Double
+    let airDate: String?
+    let episodes: [Episode]?
+    let name, overview: String?
+    let posterPath: String?
+    let seasonNumber: Int?
+    let voteAverage: Double?
 
     enum CodingKeys: String, CodingKey {
         case airDate = "air_date"
@@ -83,7 +83,7 @@ struct TVEpisode: Codable {
 
 // MARK: - Episode
 struct Episode: Codable {
-    let airDate: String
+    let airDate: String?
     let episodeNumber: Int
     let name, overview: String
     let runtime, seasonNumber: Int
@@ -98,6 +98,7 @@ struct Episode: Codable {
         case seasonNumber = "season_number"
         case stillPath = "still_path"
         case voteAverage = "vote_average"
+        
     }
 }
 

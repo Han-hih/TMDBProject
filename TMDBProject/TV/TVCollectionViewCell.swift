@@ -6,9 +6,10 @@
 //
 
 import UIKit
+import Kingfisher
 
 class TVCollectionViewCell: UICollectionViewCell {
-
+    
     @IBOutlet var tvImageView: UIImageView!
     @IBOutlet var tvTitleLabel: UILabel!
     
@@ -18,7 +19,18 @@ class TVCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
     }
-
+    
+    
+    func configure(row: Episode) {
+        tvTitleLabel.text = row.name
+        tvRateLabel.text = "\(row.voteAverage)"
+        tvDateAndRunningTimeLabel.text = "\(row.airDate ?? "") | \(row.runtime)분"
+        tvOverviewLabel.text = row.overview
+        tvOverviewLabel.numberOfLines = 0
+        if let url = URL(string: row.stillPath) {
+            tvImageView.kf.setImage(with: url)
+        }
+    }
 }

@@ -73,6 +73,7 @@ class MovieAPIManager {
         let url = URL.makeTVEpisode(tvID, seasonNum)
         
         AF.request(url, method: .get, headers: header).validate(statusCode: 200...500).responseDecodable(of: TVEpisode.self) { data in
+            
             switch data.result {
             case.success(let value):
                 completionHandler(value)
