@@ -18,6 +18,7 @@ class TVViewController: UIViewController {
     var seasonList: [Season] = []
     var seasonCount: [Int] = []
     var episodeCount: [Int] = []
+    var episodeList: [Episode] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -81,6 +82,21 @@ class TVViewController: UIViewController {
         // 에피소드 개수를 가져와서 컬렉션뷰(에피소드정보) 셀 개수로 만들어주기?
         return seasonList.map { $0.episodeCount }
     }
+    // 이미지, 제목, 에피소드 넘버, 평점, 방영날짜, 러닝타임, 오버뷰 가져오기
+    func callEpisodeRequest(tvID: Int, seasonNumber: Int) {
+        MovieAPIManager.shared.tvEpisodeRequest(tvID, seasonNumber) { value in
+            for item in value.episodes {
+                let title = item.name
+                let image = item.stillPath
+                let rate = item.voteAverage
+                let episodeNumber = item.episodeNumber
+                let broadDay = item.airDate
+                let runningTime = item.runtime
+                let overview = item.overview
+                self.episodeList.append(Episode(airDate: broadDay, episodeNumber: episodeNumber, name: title, overview: overview, runtime: runningTime, seasonNumber: episodeNumber, stillPath: image, voteAverage: rate))
+            }
+        }
+    }
     
     
 }
@@ -90,6 +106,7 @@ extension TVViewController: UICollectionViewDelegate, UICollectionViewDataSource
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        // 섹션개수만큼 for문 돌려서 설정.?
         return episodeCount.count
     }
     

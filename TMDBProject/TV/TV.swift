@@ -63,5 +63,42 @@ struct Season: Codable {
 }
 
 
-   
+// MARK: - TVEpisode
+struct TVEpisode: Codable {
+    let airDate: String
+    let episodes: [Episode]
+    let name, overview: String
+    let posterPath: String
+    let seasonNumber: Int
+    let voteAverage: Double
+
+    enum CodingKeys: String, CodingKey {
+        case airDate = "air_date"
+        case episodes, name, overview
+        case posterPath = "poster_path"
+        case seasonNumber = "season_number"
+        case voteAverage = "vote_average"
+    }
+}
+
+// MARK: - Episode
+struct Episode: Codable {
+    let airDate: String
+    let episodeNumber: Int
+    let name, overview: String
+    let runtime, seasonNumber: Int
+    let stillPath: String
+    let voteAverage: Double
+
+    enum CodingKeys: String, CodingKey {
+        case airDate = "air_date"
+        case episodeNumber = "episode_number"
+        case name, overview
+        case runtime
+        case seasonNumber = "season_number"
+        case stillPath = "still_path"
+        case voteAverage = "vote_average"
+    }
+}
+
 

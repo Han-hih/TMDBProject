@@ -31,6 +31,11 @@ extension URL {
         return seasonURL
     }
     
+    static func makeTVEpisode(_ tvID: Int, _ seasonNum: Int) -> String {
+        let episodeURL = tvBaseURL + "\(tvID)/season/\(seasonNum)"
+        return episodeURL
+    }
+    
 }
 
 
