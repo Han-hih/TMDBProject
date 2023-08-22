@@ -24,7 +24,7 @@ class TVCollectionViewCell: UICollectionViewCell {
     
     
     func configure(row: Episode) {
-        tvTitleLabel.text = row.name
+        tvTitleLabel.text = "# \(row.episodeNumber) \(row.name)"
         tvRateLabel.text = "\(row.voteAverage)"
         tvDateAndRunningTimeLabel.text = "\(row.airDate ?? "") | \(row.runtime)분"
         tvOverviewLabel.text = row.overview
