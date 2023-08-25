@@ -14,15 +14,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
+        window = UIWindow(windowScene: scene)
         
         let isLuanched = UserDefaults.standard.bool(forKey: "isLaunched")
         print(isLuanched)
         if isLuanched == false {
-            let sb = UIStoryboard(name: "Main", bundle: nil)
-            guard let vc = sb.instantiateViewController(withIdentifier: PageViewController.identifier) as?
-                    PageViewController else { return }
-            let nav = UINavigationController(rootViewController: vc)
-            window?.rootViewController = nav
+            let vc = PageViewController()
+            print(vc)
+//            let nav = UINavigationController(rootViewController: vc)
+            window?.rootViewController = vc
         } else {
             let sb = UIStoryboard(name: "Main", bundle: nil)
             guard let vc = sb.instantiateViewController(withIdentifier: ViewController.identifier) as? ViewController else { return }
