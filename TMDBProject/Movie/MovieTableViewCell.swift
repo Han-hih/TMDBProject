@@ -29,11 +29,16 @@ class MovieTableViewCell: BaseTableViewCell {
     // 장르 밑에 뷰(이미지뷰, 평점, 클립버튼, 제목, 등장인물, lineView, 자세히보기 레이블, >버튼)
     let mainView = {
         let view = UIView()
-        view.layer.cornerRadius = 8
+        view.layer.cornerRadius = 10
+        view.clipsToBounds = true
         view.layer.masksToBounds = false
+        view.layer.borderWidth = 1
+        view.layer.borderColor = UIColor.magenta.cgColor
+        view.backgroundColor = .magenta
+        view.layer.shadowOffset = CGSize(width: 3, height: 3)
+        view.layer.shadowRadius = 10
+        view.layer.shadowOpacity = 1
         view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowRadius = 8
-        view.layer.shadowOffset = CGSize(width: 4, height: 4)
         
         return view
     }()
@@ -41,6 +46,10 @@ class MovieTableViewCell: BaseTableViewCell {
     //영화 이미지 뷰
     let movieImageView = {
         let view = UIImageView()
+        view.layer.cornerRadius = 10
+        view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        view.layer.masksToBounds = true
+        view.clipsToBounds = true
         return view
     }()
     
@@ -106,9 +115,26 @@ class MovieTableViewCell: BaseTableViewCell {
     
     override func setConstraints() {
         NSLayoutConstraint.activate([
-            openDateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+            //개봉일
+            openDateLabel.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 10),
             openDateLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            openDateLabel.heightAnchor.constraint(equalToConstant: 40)
+            //장르
+            genreLabel.leadingAnchor.constraint(equalTo: mainView.leadingAnchor),
+            genreLabel.topAnchor.constraint(equalTo: openDateLabel.bottomAnchor, constant: 5),
+            //메인뷰
+            mainView.topAnchor.constraint(equalTo: genreLabel.bottomAnchor, constant: 10),
+            mainView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.85),
+            mainView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.95),
+            mainView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+
+            //영화이미지
+            movieImageView.widthAnchor.constraint(equalTo: mainView.widthAnchor, multiplier: 1),
+            movieImageView.heightAnchor.constraint(equalTo: mainView.heightAnchor, multiplier: 0.7),
+            movieImageView.centerXAnchor.constraint(equalTo: mainView.centerXAnchor),
+            movieImageView.topAnchor.constraint(equalTo: mainView.topAnchor),
+            //평점
+            rateLabel.bottomAnchor.constraint(equalTo: movieImageView.bottomAnchor),
+            rateLabel.leadingAnchor.constraint(equalTo: movieImageView.leadingAnchor)
         ])
     }
     
@@ -122,12 +148,12 @@ class MovieTableViewCell: BaseTableViewCell {
                 genreName = ViewController.genreList[key] ?? "#####"
             }
         }
-        genreLabel.text = "#\(row.genreIDS[0])"
+        genreLabel.text = "# \(genreName)"
         
         if let url = URL(string: row.backdropPath) {
             movieImageView.kf.setImage(with: url)
         }
-        rateLabel.text = "\(row.popularity)"
+        rateLabel.text = "평점: \(String(format: "%2f", row.vote_average))"
         movieNameLabel.text = row.title
         //        charactersLabel.text = row.charactersLabel
         

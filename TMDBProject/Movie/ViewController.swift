@@ -50,14 +50,14 @@ class ViewController: UIViewController {
             print(value)
             for item in value.results {
                 let title = item.title
-                let rate = item.popularity
+                let rate = item.vote_average
                 let openDate = item.releaseDate
                 let movieImage = "https://image.tmdb.org/t/p/w500" + item.backdropPath
                 let genre = item.genreIDS
                 let id = item.id
                 let background = "https://image.tmdb.org/t/p/w500" + item.posterPath
                 let overview = item.overview
-                self.movieList.append(Result(title: title, popularity: rate, backdropPath: movieImage, releaseDate: openDate, posterPath: background, id: id, genreIDS: genre, overview: overview))
+                self.movieList.append(Result(title: title, vote_average: rate, backdropPath: movieImage, releaseDate: openDate, posterPath: background, id: id, genreIDS: genre, overview: overview))
             }
             self.tableView.reloadData()
         }
