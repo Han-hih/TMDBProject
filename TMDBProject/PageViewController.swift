@@ -25,10 +25,44 @@ class SecondViewController: UIViewController {
 
 class ThirdViewController: UIViewController {
     
+    let nextButton = {
+        let button = UIButton()
+        button.setTitle("메인화면으로", for: .normal)
+        button.backgroundColor = .white
+        button.addTarget(self, action: #selector(nextVC), for: .touchUpInside)
+        
+        return button
+    }()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .yellow
+        
+        view.addSubview(nextButton)
+        nextButton.translatesAutoresizingMaskIntoConstraints = false
+        setAutoLayout()
     }
+    
+    @objc func nextVC() {
+         let vc = ViewController()
+//        let nav = UINavigationController(rootViewController: vc)
+//        nav.modalPresentationStyle = .fullScreen
+        
+        present(vc, animated: true)
+    }
+    
+    func setAutoLayout() {
+        NSLayoutConstraint.activate([
+            nextButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            nextButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            nextButton.widthAnchor.constraint(equalToConstant: 100),
+            nextButton.heightAnchor.constraint(equalTo: nextButton.widthAnchor)
+            ])
+        
+        
+    }
+    
 }
 
 
@@ -42,7 +76,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
     //1.
         var list: [UIViewController] = []
     override init(transitionStyle style: UIPageViewController.TransitionStyle, navigationOrientation: UIPageViewController.NavigationOrientation, options: [UIPageViewController.OptionsKey : Any]? = nil) {
-        super.init(transitionStyle: .pageCurl, navigationOrientation: .horizontal)
+        super.init(transitionStyle: .scroll, navigationOrientation: .horizontal)
     }
     
     required init?(coder: NSCoder) {

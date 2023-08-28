@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-class CreditTableViewCell: UITableViewCell {
+class CreditTableViewCell: BaseTableViewCell {
 
     @IBOutlet var actorImage: UIImageView!
     @IBOutlet var actorNameLabel: UILabel!
@@ -21,6 +21,11 @@ class CreditTableViewCell: UITableViewCell {
         // Initialization code
     }
 
+    override func configure() { }
+    
+    
+    override func setConstraints() {  }
+    
     func configure(row: Credits) {
         if let url = URL(string: row.actorImage) {
             actorImage.kf.setImage(with: url)

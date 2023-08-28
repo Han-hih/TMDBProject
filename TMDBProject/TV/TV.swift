@@ -53,7 +53,7 @@ struct TVSeason: Codable {
 struct Season: Codable {
     let episodeCount, id: Int
     let name: String
-    let seasonNumber: Int
+    let seasonNumber: Int?
 
     enum CodingKeys: String, CodingKey {
         case episodeCount = "episode_count"

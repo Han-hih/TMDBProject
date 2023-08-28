@@ -19,6 +19,11 @@ class TVViewController: UIViewController {
     var seasonCount = 0
     var episodeCount: [Int] = []
     var episodeList: [Episode] = []
+    
+    
+    
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print(#function)
@@ -58,12 +63,14 @@ class TVViewController: UIViewController {
 //            print(self.tvID)
 //        }
 //    }
+    
     func callSearchRequest(_ query: String) -> Int{
-        
+
         MovieAPIManager.shared.tvSearchRequestID(query) { value in
             self.tvID = value.results[0].id
         }
         // 이 값을 시즌정보와 에피소드정보(?) 불러오는 함수에 넣어준다.
+        self.tvCollectionView.reloadData()
         return tvID
         
     }
@@ -77,8 +84,8 @@ class TVViewController: UIViewController {
                 let seasonID = item.id
                 let seasonName = item.name
                 self.seasonList.append(Season(episodeCount: episodcount, id: seasonID, name: seasonName, seasonNumber: seasonNumber))
-                print(seasonID, seasonName, seasonNumber, episodcount)
-                self.seasonCount = seasonNumber
+                print(seasonID, seasonName, seasonNumber ?? 0, episodcount)
+                self.seasonCount = seasonNumber ?? 0
             }
             self.tvCollectionView.reloadData()
         }
@@ -97,7 +104,6 @@ class TVViewController: UIViewController {
                 let runningTime = item.runtime
                 let overview = item.overview
                 self.episodeList.append(Episode(airDate: broadDay, episodeNumber: episodeNumber, name: title, overview: overview, runtime: runningTime, seasonNumber: episodeNumber, stillPath: image, voteAverage: rate))
-               
             }
             self.tvCollectionView.reloadData()
         }
@@ -129,7 +135,7 @@ extension TVViewController: UICollectionViewDelegate, UICollectionViewDataSource
         func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
             if kind == UICollectionView.elementKindSectionHeader {
                 guard let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "TVCollectionReusableView", for: indexPath) as? TVCollectionReusableView else { return UICollectionViewCell() }
-                view.headLabel.text = "\(seasonList[0].seasonNumber) \(seasonList[0].name)"
+                view.headLabel.text = "\(seasonList[0].seasonNumber ?? 0) \(seasonList[0].name)"
                 return view
             }
             else {
@@ -138,16 +144,26 @@ extension TVViewController: UICollectionViewDelegate, UICollectionViewDataSource
         }
     }
 
+
+
+
 extension TVViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
         guard let query = searchBar.text else { return }
+     
+        
         
        tvID = callSearchRequest(query)
+        
+        
 //        callSeasonRequest(tvID: callSearchRequest(query))
         print(tvID)
-        callEpisodeRequest(tvID, seasonNumber: callSeasonRequest(tvID))
+        let seasonNum = callSeasonRequest(tvID)
+        
+        callEpisodeRequest(tvID, seasonNumber: seasonNum)
         print(episodeList)
+        
         tvCollectionView.reloadData()
     }
         

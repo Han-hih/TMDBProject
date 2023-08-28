@@ -10,6 +10,7 @@ import Foundation
 extension URL {
     static let baseURL = "https://api.themoviedb.org/3/"
     static let tvBaseURL = "https://api.themoviedb.org/3/tv/"
+    
     static func makeEndPointString(_ endPoint: String, _ secondEndPoint: String) -> String {
         return baseURL + "trending/" + endPoint + secondEndPoint
     }

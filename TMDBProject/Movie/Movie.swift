@@ -13,7 +13,6 @@ import UIKit
 //
 //   let movie = try? JSONDecoder().decode(Movie.self, from: jsonData)
 
-import Foundation
 
 // MARK: - Movie
 struct Movie: Codable {

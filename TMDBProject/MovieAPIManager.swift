@@ -12,7 +12,6 @@ import Alamofire
 
 class MovieAPIManager {
     
-    let group = DispatchGroup()
     
     var genreList: GenreElement = GenreElement(id: 0, name: "")
     //    var list: Movie = Movie(openDateLabel: "", genreLabel: "", movieImageView: "", rateLabel: 0.0, movieNameLabel: "", charactersLabel: "", id: 0, backImageView: "", overView: "")
@@ -23,7 +22,9 @@ class MovieAPIManager {
                                "Authorization": APIKey.movieAcces]
     
     func callrRequest(type: firstEndpoint, secondtype: secondEndPoint, completionHandler: @escaping (Movie) -> ()) {
-        let url = type.requestURL + secondtype.secondRequestURL + "api_key=\(APIKey.movieKey)"
+        let url = URL.makeEndPointString(firstEndpoint.movie.requestURL, secondEndPoint.week.secondRequestURL) + "api_key=\(APIKey.movieKey)"
+        //type.requestURL + secondtype.secondRequestURL + "api_key=\(APIKey.movieKey)"
+        print(url)
         AF
         //            .request(url, headers: header)
         //            .validate(statusCode: 200...500)
@@ -36,8 +37,9 @@ class MovieAPIManager {
                 switch data.result {
                 case .success(let value):
                     completionHandler(value)
+                    print("hello")
                 case .failure(let error):
-                    print(error)
+                    print(error, "ppppppppp")
                 }
             }
     }
@@ -63,6 +65,7 @@ class MovieAPIManager {
             switch data.result {
             case.success(let value):
                 completionHandler(value)
+                
             case.failure(let error):
                 print(error)
             }
@@ -77,6 +80,7 @@ class MovieAPIManager {
             switch data.result {
             case.success(let value):
                 completionHandler(value)
+                
             case.failure(let error):
                 print(error)
             }

@@ -16,10 +16,10 @@ enum firstEndpoint {
     
     var requestURL: String {
         switch self {
-        case.all: return URL.baseURL + "all/"
-        case.movie: return URL.baseURL + "movie/"
-        case.tv: return URL.baseURL + "tv/"
-        case.person: return URL.baseURL + "person/"
+        case.all: return "all/"
+        case.movie: return "movie/"
+        case.tv: return "tv/"
+        case.person: return "person/"
         }
     }
     

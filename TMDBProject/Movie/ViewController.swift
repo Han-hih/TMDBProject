@@ -9,7 +9,17 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    @IBOutlet var movieTableView: UITableView!
+    lazy var tableView = {
+        let view = UITableView(frame: .zero, style: .plain)
+        view.rowHeight = UITableView.automaticDimension
+        view.delegate = self
+        view.dataSource = self
+        view.register(MovieTableViewCell.self, forCellReuseIdentifier: MovieTableViewCell.identifier)
+        view.rowHeight = 400
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     var movieList: [Result] = []
     var page = 1
     var isEnd = false
@@ -18,19 +28,26 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        movieTableView.delegate = self
-        movieTableView.dataSource = self
-        movieTableView.prefetchDataSource = self
+        self.view.addSubview(tableView)
+        autoLayout()
+        tableView.prefetchDataSource = self
         genreRequest()
-        movieTableView.rowHeight = 400
-        nibSetting()
+//        nibSetting()
         callRequest(page: page)
+    }
+    func autoLayout() {
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
+        ])
     }
     
     
     func callRequest(page: Int) {
         MovieAPIManager.shared.callrRequest(type: .movie, secondtype: .week) { value in
-            
+            print(value)
             for item in value.results {
                 let title = item.title
                 let rate = item.popularity
@@ -42,7 +59,7 @@ class ViewController: UIViewController {
                 let overview = item.overview
                 self.movieList.append(Result(title: title, popularity: rate, backdropPath: movieImage, releaseDate: openDate, posterPath: background, id: id, genreIDS: genre, overview: overview))
             }
-            self.movieTableView.reloadData()
+            self.tableView.reloadData()
         }
         
     }
@@ -74,7 +91,7 @@ class ViewController: UIViewController {
     // 영화 테이블 뷰 닙 설정
     func nibSetting() {
         let nib = UINib(nibName: MovieTableViewCell.identifier, bundle: nil)
-        movieTableView.register(nib, forCellReuseIdentifier: MovieTableViewCell.identifier)
+        tableView.register(nib, forCellReuseIdentifier: MovieTableViewCell.identifier)
         
     }
     
@@ -96,18 +113,13 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource, UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieTableViewCell.identifier) as? MovieTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieTableViewCell.identifier, for: indexPath) as? MovieTableViewCell else { return UITableViewCell() }
         let row = movieList[indexPath.row]
-        cell.layer.cornerRadius = 8
-        cell.clipsToBounds = true
-        cell.layer.borderWidth = 1
-        cell.layer.borderColor = UIColor.black.cgColor
         cell.configure(row: row)
         
         return cell
     }
     
-    // 값 전달이 안됨.............
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         guard let viewcontroller = storyboard.instantiateViewController(withIdentifier: CreditViewController.identifier) as? CreditViewController else { return }

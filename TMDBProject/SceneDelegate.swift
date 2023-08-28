@@ -12,24 +12,33 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
 
-    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        guard let scene = (scene as? UIWindowScene) else { return }
-        window = UIWindow(windowScene: scene)
+//    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+//        guard let scene = (scene as? UIWindowScene) else { return }
+//        window = UIWindow(windowScene: scene)
         
-        let isLuanched = UserDefaults.standard.bool(forKey: "isLaunched")
-        print(isLuanched)
-        if isLuanched == false {
-            let vc = PageViewController()
-            print(vc)
-//            let nav = UINavigationController(rootViewController: vc)
-            window?.rootViewController = vc
-        } else {
-            let sb = UIStoryboard(name: "Main", bundle: nil)
-            guard let vc = sb.instantiateViewController(withIdentifier: ViewController.identifier) as? ViewController else { return }
-            let nav = UINavigationController(rootViewController: vc)
-            window?.rootViewController = nav
+        func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+           
+            guard let scene = (scene as? UIWindowScene) else { return }
+            
+            window = UIWindow(windowScene: scene)
+            let vc = ViewController()
+            window?.rootViewController = UINavigationController(rootViewController: vc)
+            window?.makeKeyAndVisible()
         }
-        window?.makeKeyAndVisible()
+//        let isLuanched = UserDefaults.standard.bool(forKey: "isLaunched")
+//        print(isLuanched)
+//        if isLuanched == false {
+//            let vc = PageViewController()
+//            print(vc)
+////            let nav = UINavigationController(rootViewController: vc)
+//            window?.rootViewController = vc
+//        } else {
+//            let sb = UIStoryboard(name: "Main", bundle: nil)
+//             guard let vc = sb.instantiateViewController(withIdentifier: ViewController.identifier) as? ViewController else { return }
+//            let nav = UINavigationController(rootViewController: vc)
+//            window?.rootViewController = nav
+//        }
+//        window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -61,5 +70,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
 
-}
+
 
