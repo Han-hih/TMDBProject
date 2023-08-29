@@ -13,7 +13,8 @@ class BaseViewController: UIViewController {
         super.viewDidLoad()
 
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
-        
+        configure()
+        setconstraints()
         
         
     }

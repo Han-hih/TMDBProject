@@ -8,7 +8,7 @@
 import UIKit
 
 class ProfileViewController: BaseViewController {
-
+    
     let myImageView = {
         let view = UIImageView()
         view.clipsToBounds = true
@@ -47,21 +47,21 @@ class ProfileViewController: BaseViewController {
     let nameTextButton = {
         let button = CustomButton()
         button.setTitle("이름", for: .normal)
-        
+        button.addTarget(self, action: #selector(nameButtonTapped), for: .touchUpInside)
         return button
     }()
     
     let nicknameTextButton = {
         let button = CustomButton()
         button.setTitle("사용자 이름", for: .normal)
-        
+        button.addTarget(self, action: #selector(nicknameButtonTapped), for: .touchUpInside)
         return button
     }()
     
     let genderTextButton = {
         let button = CustomButton()
         button.setTitle("성별", for: .normal)
-        
+        button.addTarget(self, action: #selector(genderButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -71,6 +71,25 @@ class ProfileViewController: BaseViewController {
         navigationItem.titleView?.tintColor = .white
         configure()
         setconstraints()
+    }
+    
+    // closure
+    @objc func nameButtonTapped() {
+        let vc = NameChangeViewController()
+        vc.title = nameLabelView.text
+        //3.
+        vc.completionHandler = { text in
+            self.nameTextButton.setTitle(text, for: .normal)
+        }
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    //notification
+    @objc func nicknameButtonTapped() {
+        
+    }
+    
+    @objc func genderButtonTapped() {
+        
     }
     
     override func configure() {
