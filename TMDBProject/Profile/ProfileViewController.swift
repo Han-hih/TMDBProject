@@ -71,6 +71,21 @@ class ProfileViewController: BaseViewController {
         navigationItem.titleView?.tintColor = .white
         configure()
         setconstraints()
+        
+    
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //notification 2.
+        NotificationCenter.default.addObserver(self, selector: #selector(nicknameTextChangeObserver), name: NSNotification.Name("nicknameText"), object: nil)
+    }
+    
+        // notification 2.
+    @objc func nicknameTextChangeObserver(notification: NSNotification) {
+        if let nickname = notification.userInfo?["nickname"] as? String {
+            nicknameTextButton.setTitle(nickname, for: .normal)
+        }
     }
     
     // closure
@@ -85,7 +100,10 @@ class ProfileViewController: BaseViewController {
     }
     //notification
     @objc func nicknameButtonTapped() {
+        let vc = NicknameViewController()
+        vc.title = nickNameLabelView.text
         
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func genderButtonTapped() {

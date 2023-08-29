@@ -35,6 +35,7 @@
 		80BED0012A9DDE3B00C43978 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BED0002A9DDE3B00C43978 /* CustomButton.swift */; };
 		80BED0032A9DE5A300C43978 /* NameChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BED0022A9DE5A300C43978 /* NameChangeViewController.swift */; };
 		80BED0052A9DEA6400C43978 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BED0042A9DEA6400C43978 /* CustomTextField.swift */; };
+		80BED0072A9E02B300C43978 /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BED0062A9E02B300C43978 /* NicknameViewController.swift */; };
 		80C62F2E2A90939600BC6FAC /* TVViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C62F2D2A90939600BC6FAC /* TVViewController.swift */; };
 		80C62F312A909D1200BC6FAC /* TVCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C62F2F2A909D1200BC6FAC /* TVCollectionViewCell.swift */; };
 		80C62F322A909D1200BC6FAC /* TVCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80C62F302A909D1200BC6FAC /* TVCollectionViewCell.xib */; };
@@ -72,6 +73,7 @@
 		80BED0002A9DDE3B00C43978 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		80BED0022A9DE5A300C43978 /* NameChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameChangeViewController.swift; sourceTree = "<group>"; };
 		80BED0042A9DEA6400C43978 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		80BED0062A9E02B300C43978 /* NicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewController.swift; sourceTree = "<group>"; };
 		80C62F2D2A90939600BC6FAC /* TVViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVViewController.swift; sourceTree = "<group>"; };
 		80C62F2F2A909D1200BC6FAC /* TVCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVCollectionViewCell.swift; sourceTree = "<group>"; };
 		80C62F302A909D1200BC6FAC /* TVCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TVCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 			children = (
 				80BECFFC2A9DD35000C43978 /* ProfileViewController.swift */,
 				80BED0022A9DE5A300C43978 /* NameChangeViewController.swift */,
+				80BED0062A9E02B300C43978 /* NicknameViewController.swift */,
 				80BECFFE2A9DD9B500C43978 /* CustomLabel.swift */,
 				80BED0002A9DDE3B00C43978 /* CustomButton.swift */,
 				80BED0042A9DEA6400C43978 /* CustomTextField.swift */,
@@ -276,6 +279,7 @@
 				80BECFA92A9C6F2200C43978 /* BaseViewController.swift in Sources */,
 				80BECFAB2A9C720800C43978 /* BaseTableViewCell.swift in Sources */,
 				8019EE652A87DD0800386DF8 /* EndPoint.swift in Sources */,
+				80BED0072A9E02B300C43978 /* NicknameViewController.swift in Sources */,
 				80C62F312A909D1200BC6FAC /* TVCollectionViewCell.swift in Sources */,
 				80BED0052A9DEA6400C43978 /* CustomTextField.swift in Sources */,
 				8019EE582A877B0C00386DF8 /* Movie.swift in Sources */,
