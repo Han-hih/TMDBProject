@@ -22,7 +22,7 @@ class CustomButton: UIButton {
     
     func setButton() {
         setTitleColor(.green, for: .normal)
-        backgroundColor = .white
+        backgroundColor = .clear
         contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left
         
     }

@@ -7,7 +7,14 @@
 
 import UIKit
 
+protocol PassBoolDelegate {
+    func recieveGender(text: String)
+}
+
 class ProfileViewController: BaseViewController {
+    
+   
+    
     
     let myImageView = {
         let view = UIImageView()
@@ -105,9 +112,11 @@ class ProfileViewController: BaseViewController {
         
         navigationController?.pushViewController(vc, animated: true)
     }
-    
+    //protocol
     @objc func genderButtonTapped() {
-        
+        let vc = GenderViewController()
+        vc.delegate = self
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     override func configure() {
@@ -145,7 +154,7 @@ class ProfileViewController: BaseViewController {
             genderLabelView.leadingAnchor.constraint(equalTo: nameLabelView.leadingAnchor),
             genderLabelView.heightAnchor.constraint(equalTo: nameLabelView.heightAnchor),
             genderLabelView.widthAnchor.constraint(equalTo: nameLabelView.widthAnchor),
-            //이름 텍스트 필드
+            //이름 텍스트버튼
             nameTextButton.topAnchor.constraint(equalTo: nameLabelView.topAnchor),
             nameTextButton.leadingAnchor.constraint(equalTo: nameLabelView.trailingAnchor),
             nameTextButton.heightAnchor.constraint(equalTo: nameLabelView.heightAnchor),
@@ -163,4 +172,10 @@ class ProfileViewController: BaseViewController {
         ])
     }
     
+}
+
+extension ProfileViewController: PassBoolDelegate {
+    func recieveGender(text: String) {
+        genderTextButton.setTitle(text, for: .normal)
+    }
 }

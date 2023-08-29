@@ -36,6 +36,7 @@
 		80BED0032A9DE5A300C43978 /* NameChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BED0022A9DE5A300C43978 /* NameChangeViewController.swift */; };
 		80BED0052A9DEA6400C43978 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BED0042A9DEA6400C43978 /* CustomTextField.swift */; };
 		80BED0072A9E02B300C43978 /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BED0062A9E02B300C43978 /* NicknameViewController.swift */; };
+		80BED00C2A9E193B00C43978 /* GenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BED00B2A9E193B00C43978 /* GenderViewController.swift */; };
 		80C62F2E2A90939600BC6FAC /* TVViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C62F2D2A90939600BC6FAC /* TVViewController.swift */; };
 		80C62F312A909D1200BC6FAC /* TVCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C62F2F2A909D1200BC6FAC /* TVCollectionViewCell.swift */; };
 		80C62F322A909D1200BC6FAC /* TVCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80C62F302A909D1200BC6FAC /* TVCollectionViewCell.xib */; };
@@ -74,6 +75,7 @@
 		80BED0022A9DE5A300C43978 /* NameChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameChangeViewController.swift; sourceTree = "<group>"; };
 		80BED0042A9DEA6400C43978 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		80BED0062A9E02B300C43978 /* NicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewController.swift; sourceTree = "<group>"; };
+		80BED00B2A9E193B00C43978 /* GenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderViewController.swift; sourceTree = "<group>"; };
 		80C62F2D2A90939600BC6FAC /* TVViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVViewController.swift; sourceTree = "<group>"; };
 		80C62F2F2A909D1200BC6FAC /* TVCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVCollectionViewCell.swift; sourceTree = "<group>"; };
 		80C62F302A909D1200BC6FAC /* TVCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TVCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				80BECFFC2A9DD35000C43978 /* ProfileViewController.swift */,
 				80BED0022A9DE5A300C43978 /* NameChangeViewController.swift */,
 				80BED0062A9E02B300C43978 /* NicknameViewController.swift */,
+				80BED00B2A9E193B00C43978 /* GenderViewController.swift */,
 				80BECFFE2A9DD9B500C43978 /* CustomLabel.swift */,
 				80BED0002A9DDE3B00C43978 /* CustomButton.swift */,
 				80BED0042A9DEA6400C43978 /* CustomTextField.swift */,
@@ -289,6 +292,7 @@
 				80C62F3B2A920F9B00BC6FAC /* Genre.swift in Sources */,
 				80BECFFF2A9DD9B500C43978 /* CustomLabel.swift in Sources */,
 				8019EE522A872FC500386DF8 /* APIKey.swift in Sources */,
+				80BED00C2A9E193B00C43978 /* GenderViewController.swift in Sources */,
 				8063810D2A89024A0059B777 /* CreditViewController.swift in Sources */,
 				8019EE5A2A87B4C100386DF8 /* MovieAPIManager.swift in Sources */,
 				80C62F352A909D2500BC6FAC /* TVCollectionReusableView.swift in Sources */,
