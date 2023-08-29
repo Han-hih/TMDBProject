@@ -64,6 +64,7 @@ class MovieTableViewCell: BaseTableViewCell {
     let clipButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "paperclip.circle.fill"), for: .normal)
+        button.setTitleColor(UIColor.white, for: .normal)
         return button
     }()
     //제목레이블
@@ -134,7 +135,12 @@ class MovieTableViewCell: BaseTableViewCell {
             movieImageView.topAnchor.constraint(equalTo: mainView.topAnchor),
             //평점
             rateLabel.bottomAnchor.constraint(equalTo: movieImageView.bottomAnchor),
-            rateLabel.leadingAnchor.constraint(equalTo: movieImageView.leadingAnchor)
+            rateLabel.leadingAnchor.constraint(equalTo: movieImageView.leadingAnchor),
+            //클립버튼
+            clipButton.topAnchor.constraint(equalTo: movieImageView.topAnchor),
+            clipButton.trailingAnchor.constraint(equalTo: movieImageView.trailingAnchor),
+            clipButton.heightAnchor.constraint(equalTo: movieImageView.heightAnchor, multiplier: 0.2),
+            clipButton.widthAnchor.constraint(equalTo: clipButton.heightAnchor, multiplier: 1)
         ])
     }
     
