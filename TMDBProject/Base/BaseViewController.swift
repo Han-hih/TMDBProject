@@ -12,15 +12,19 @@ class BaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-    
-        
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
         
         
         
     }
     
-
+    func configure() {
+        
+    }
     
+    func setconstraints() {
+        
+    }
     
     
     
