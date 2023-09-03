@@ -136,5 +136,52 @@ class MovieAPIManager {
         
     }
     
+    func allRequest(completionHandler: @escaping(Multiple?) -> Void) {
+        guard let url = URL(string: URL.makeEndPointString(firstEndpoint.all.requestURL, secondEndPoint.day.secondRequestURL) + "api_key=\(APIKey.movieKey)") else { return }
+        var request = URLRequest(url: url)
+        request.headers = header
+        let statusCode = (200...500)
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            DispatchQueue.main.async {
+                if let error = error {
+                    completionHandler(nil)
+                    print(error)
+                    return
+                }
+                
+                guard let response = response as? HTTPURLResponse, statusCode.contains(response.statusCode) else {
+                    completionHandler(nil)
+                    print(error)
+                    return
+                }
+                
+                guard let data = data else {
+                    completionHandler(nil)
+                    return
+                }
+                
+                do {
+                    let result = try JSONDecoder().decode(Multiple.self, from: data)
+                    completionHandler(result)
+                    print(result)
+                    return
+                }
+                catch {
+                    completionHandler(nil)
+                    print(error)
+                }
+                
+            }
+            
+        }.resume()
+        
+        
+      
+        
+    }
+    
+    
+    
+    
 }
 
