@@ -25,6 +25,9 @@
 		8019EE672A87DD7F00386DF8 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8019EE662A87DD7F00386DF8 /* URL+Extension.swift */; };
 		80211F032AA46C990062AE4F /* MultipleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80211F022AA46C990062AE4F /* MultipleViewController.swift */; };
 		80211F052AA46E530062AE4F /* Multiple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80211F042AA46E530062AE4F /* Multiple.swift */; };
+		80211F072AA490420062AE4F /* MultipleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80211F062AA490420062AE4F /* MultipleView.swift */; };
+		80211F092AA490F80062AE4F /* MultipleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80211F082AA490F80062AE4F /* MultipleTableViewCell.swift */; };
+		80211F0B2AA491530062AE4F /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80211F0A2AA491530062AE4F /* BaseView.swift */; };
 		8063810D2A89024A0059B777 /* CreditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8063810C2A89024A0059B777 /* CreditViewController.swift */; };
 		806381102A890C2F0059B777 /* CreditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8063810E2A890C2F0059B777 /* CreditTableViewCell.swift */; };
 		806381112A890C2F0059B777 /* CreditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8063810F2A890C2F0059B777 /* CreditTableViewCell.xib */; };
@@ -66,6 +69,9 @@
 		8019EE662A87DD7F00386DF8 /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
 		80211F022AA46C990062AE4F /* MultipleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleViewController.swift; sourceTree = "<group>"; };
 		80211F042AA46E530062AE4F /* Multiple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Multiple.swift; sourceTree = "<group>"; };
+		80211F062AA490420062AE4F /* MultipleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleView.swift; sourceTree = "<group>"; };
+		80211F082AA490F80062AE4F /* MultipleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleTableViewCell.swift; sourceTree = "<group>"; };
+		80211F0A2AA491530062AE4F /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		8063810C2A89024A0059B777 /* CreditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditViewController.swift; sourceTree = "<group>"; };
 		8063810E2A890C2F0059B777 /* CreditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditTableViewCell.swift; sourceTree = "<group>"; };
 		8063810F2A890C2F0059B777 /* CreditTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreditTableViewCell.xib; sourceTree = "<group>"; };
@@ -148,8 +154,10 @@
 		80211F012AA46AB40062AE4F /* Mutiple */ = {
 			isa = PBXGroup;
 			children = (
-				80211F022AA46C990062AE4F /* MultipleViewController.swift */,
 				80211F042AA46E530062AE4F /* Multiple.swift */,
+				80211F022AA46C990062AE4F /* MultipleViewController.swift */,
+				80211F082AA490F80062AE4F /* MultipleTableViewCell.swift */,
+				80211F062AA490420062AE4F /* MultipleView.swift */,
 			);
 			path = Mutiple;
 			sourceTree = "<group>";
@@ -159,6 +167,7 @@
 			children = (
 				80BECFA82A9C6F2200C43978 /* BaseViewController.swift */,
 				80BECFAA2A9C720800C43978 /* BaseTableViewCell.swift */,
+				80211F0A2AA491530062AE4F /* BaseView.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -296,6 +305,7 @@
 				80BECFA92A9C6F2200C43978 /* BaseViewController.swift in Sources */,
 				80BECFAB2A9C720800C43978 /* BaseTableViewCell.swift in Sources */,
 				8019EE652A87DD0800386DF8 /* EndPoint.swift in Sources */,
+				80211F072AA490420062AE4F /* MultipleView.swift in Sources */,
 				80BED0072A9E02B300C43978 /* NicknameViewController.swift in Sources */,
 				80C62F312A909D1200BC6FAC /* TVCollectionViewCell.swift in Sources */,
 				80BED0052A9DEA6400C43978 /* CustomTextField.swift in Sources */,
@@ -314,9 +324,11 @@
 				80BECF732A98D6D100C43978 /* PageViewController.swift in Sources */,
 				80211F052AA46E530062AE4F /* Multiple.swift in Sources */,
 				80BECFFD2A9DD35000C43978 /* ProfileViewController.swift in Sources */,
+				80211F092AA490F80062AE4F /* MultipleTableViewCell.swift in Sources */,
 				806381102A890C2F0059B777 /* CreditTableViewCell.swift in Sources */,
 				8019EE382A87186200386DF8 /* SceneDelegate.swift in Sources */,
 				80BED0032A9DE5A300C43978 /* NameChangeViewController.swift in Sources */,
+				80211F0B2AA491530062AE4F /* BaseView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
