@@ -12,7 +12,7 @@ class MultipleView: BaseView {
     lazy var tableview = {
         let view = UITableView(frame: .zero, style: .plain)
         view.register(MultipleTableViewCell.self, forCellReuseIdentifier: "MultipleTableViewCell")
-        
+        view.rowHeight = 150
         
         
         return view

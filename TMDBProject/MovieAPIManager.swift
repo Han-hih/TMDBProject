@@ -140,7 +140,9 @@ class MovieAPIManager {
         guard let url = URL(string: URL.makeEndPointString(firstEndpoint.all.requestURL, secondEndPoint.day.secondRequestURL) + "api_key=\(APIKey.movieKey)") else { return }
         var request = URLRequest(url: url)
         request.headers = header
-        let statusCode = (200...500)
+//        print(url)
+        let statusCode = 200...500
+        
         URLSession.shared.dataTask(with: request) { data, response, error in
             DispatchQueue.main.async {
                 if let error = error {
