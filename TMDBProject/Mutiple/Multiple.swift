@@ -18,5 +18,5 @@ struct Results: Codable {
     let backdrop_path, overview, media_type: String
     let title, name: String
     let vote_average: Double
-    
+    let genreIDS: [Int]
 }
