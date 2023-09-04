@@ -11,11 +11,18 @@ import UIKit
 enum Type {
     case tv
     case movie
+    case Person
+    
+    
 }
+
 
 
 class MultipleViewController: BaseViewController {
 
+    
+    var media = Type.tv
+    
     let mainView = MultipleView()
     var list: Multiple = Multiple(totalPages: 0, page: 0, results: [])
     
@@ -54,16 +61,47 @@ extension MultipleViewController: UITableViewDataSource, UITableViewDelegate {
             UITableViewCell() }
         
         
+        if list.results[indexPath.row].media_type == "tv" {
+            cell.backgroundColor = UIColor.red
+        } else if list.results[indexPath.row].media_type == "movie" {
+            cell.backgroundColor = UIColor.blue
+        } else {
+            cell.backgroundColor = UIColor.white
+        }
         
         
-        cell.backgroundColor = .red
+
+        guard let url = URL(string: "https://image.tmdb.org/t/p/w500" + list.results[indexPath.row].backdrop_path) else { return UITableViewCell() }
+        cell.contentImageView.load(url: url)
         
         return cell
+        }
+    
+    func getBackgroundColor() -> UIColor {
+        switch media {
+        case .tv: return UIColor.systemRed
+        case .movie: return UIColor.systemBlue
+        case .Person: return UIColor.systemCyan
         }
     }
     
     
+    }
     
     
+    
+extension UIImageView {
+    func load(url: URL) {
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url) {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self?.image = image
+                    }
+                }
+            }
+        }
+    }
+}
     
 

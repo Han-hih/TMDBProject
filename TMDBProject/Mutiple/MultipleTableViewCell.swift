@@ -57,7 +57,12 @@ class MultipleTableViewCell: BaseTableViewCell {
         
     }
     override func setConstraints() {
-        
+        NSLayoutConstraint.activate([
+            contentImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            contentImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            contentImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            contentImageView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.2)
+        ])
     }
     
 }
